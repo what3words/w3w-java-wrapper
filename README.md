@@ -15,7 +15,7 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 ```xml
 <dependency>
   <groupId>com.what3words</groupId>
-  <artifactId>what3words-api-java</artifactId>
+  <artifactId>w3w-java-wrapper</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
@@ -114,4 +114,4 @@ new Thread(new Runnable() {
 - [Convert To Coordinates](src/main/java/com/what3words/javawrapper/examples/ConvertToCoordinatesExample.java) - Convert a 3 word address to a latitude and longitude
 - [AutoSuggest](src/main/java/com/what3words/javawrapper/examples/AutosuggestExample.java) - AutoSuggest can take a slightly incorrect 3 word address, and suggest a list of valid 3 word addresses.
 - [Grid Section](src/main/java/com/what3words/javawrapper/examples/GridSectionExample.java) - Returns a section of the 3m x 3m what3words grid for a bounding box.
-- [Available Languages](src/main/java/com/what3words/javawrapper/examples/AvailableLanguagesExample.java) - Retrieves a list all available 3 word address languages
+- [Available Languages](src/main/java/com/what3words/javawrapper/examples/AvailableLanguagesExample.java) - Retrieves a list all available 3 word address languagesw3w-java-wrapper
