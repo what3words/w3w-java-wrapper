@@ -16,14 +16,14 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 <dependency>
   <groupId>com.what3words</groupId>
   <artifactId>w3w-java-wrapper</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>3.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'com.what3words:w3w-java-wrapper:0.0.1-SNAPSHOT'
+implementation 'com.what3words:w3w-java-wrapper:3.0.0'
 ```
 
 ## Documentation
