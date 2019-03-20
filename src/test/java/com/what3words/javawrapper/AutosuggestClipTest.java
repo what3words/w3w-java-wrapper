@@ -17,8 +17,7 @@ import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.Suggestion;
 
 public class AutosuggestClipTest {
-
-    What3WordsV3 api = new What3WordsV3("what3words-api-key");
+    What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
 
     @Test
     public void testSimpleCircleClip() {

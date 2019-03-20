@@ -10,8 +10,7 @@ import com.what3words.javawrapper.response.ConvertTo3WA;
 import com.what3words.javawrapper.response.APIResponse.Error;
 
 public class ConvertTo3WATest {
-
-    What3WordsV3 api = new What3WordsV3("what3words-api-key");
+    What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
     
     @Test
     public void twoInvalidCoordsTest() {
