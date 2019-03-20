@@ -70,6 +70,7 @@ public class What3WordsV3 {
 
     /**
      * Return the {@link Retrofit} instance. If called for the first time builds the instance.
+     * @return this retrofit instance
      */
     public Retrofit getRetrofitInstance() {
         return retrofit;
@@ -120,7 +121,7 @@ public class What3WordsV3 {
      * as south,west,north,east.
      * 
      * @param boundingBox <code>BoundingBox</code>, for which the grid should be returned. The requested box must not exceed 4km 
-     * from corner to corner. Latitudes must be >= -90 and <= 90, but longitudes are allowed to wrap around 180. To specify a 
+     * from corner to corner. Latitudes must be &gt;= -90 and &lt;= 90, but longitudes are allowed to wrap around 180. To specify a 
      * bounding-box that crosses the anti-meridian, use longitude greater than 180.
      * @return a {@link GridSectionRequest.Builder} instance suitable for invoking a <code>grid-section</code> API request
      */

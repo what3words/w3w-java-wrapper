@@ -80,7 +80,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         }
         
         /**
-         * Specifies the number of results (must be <= nResults) within the results set which will have a focus. Defaults to <code>nResults</code>. 
+         * Specifies the number of results (must be &lt;= nResults) within the results set which will have a focus. Defaults to <code>nResults</code>. 
          * This allows you to run autosuggest with a mix of focussed and unfocussed results, to give you a "blend" of the two. This is exactly what the old V2 
          * <code>standardblend</code> did, and <code>standardblend</code> behaviour can easily be replicated by passing <code>nFocusResults=1</code>, 
          * which will return just one focussed result and the rest unfocussed.
@@ -151,7 +151,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          * this parameter must be a supported 3 word address language as an ISO 639-1 2 letter code. For voice input (see voice section), 
          * language must always be specified.
          * 
-         * @param language
+         * @param language the fallback language
          * @return a {@link Builder} instance suitable for invoking a <code>autosuggest</code> API request
          */
         public Builder language(String language) {
@@ -160,10 +160,10 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         }
         
         /**
-         * For power users, used to specify voice input mode. Can be {@link AutosuggestInputType.TEXT} (default), {@link AutosuggestInputType.VOCON_HYBRID} 
-         * or {@link AutosuggestInputType.NMDP_ASR}. See voice recognition section within the developer docs for more details https://docs.what3words.com/api/v3/#voice.
+         * For power users, used to specify voice input mode. Can be <code>AutosuggestInputType.TEXT</code> (default), <code>AutosuggestInputType.VOCON_HYBRID</code> 
+         * or <code>AutosuggestInputType.NMDP_ASR</code>. See voice recognition section within the developer docs for more details https://docs.what3words.com/api/v3/#voice.
          * 
-         * @param type
+         * @param type the AutosuggestInputType
          * @return a {@link Builder} instance suitable for invoking a <code>autosuggest</code> API request
          */
         public Builder inputType(AutosuggestInputType type) {
