@@ -3,7 +3,7 @@ package com.what3words.javawrapper.examples;
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.request.BoundingBox;
 import com.what3words.javawrapper.request.Coordinates;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.GridSection;
 
 public class GridSectionExample {
@@ -18,18 +18,18 @@ public class GridSectionExample {
             System.out.println("Grid: " + gridSection);
 
         } else {
-            Error error = gridSection.getError();
+            What3WordsError error = gridSection.getError();
 
-            if (error == Error.BAD_BOUNDING_BOX) { // The BoundingBox is invalid
+            if (error == What3WordsError.BAD_BOUNDING_BOX) { // The BoundingBox is invalid
                 System.out.println("BadBoundingBox: " + error.getMessage());
 
-            } else if (error == Error.BAD_BOUNDING_BOX_TOO_BIG) { // The BoundingBox is too big
+            } else if (error == What3WordsError.BAD_BOUNDING_BOX_TOO_BIG) { // The BoundingBox is too big
                 System.out.println("BadBoundingBoxTooBig: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {

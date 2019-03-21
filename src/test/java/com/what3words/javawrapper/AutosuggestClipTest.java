@@ -12,7 +12,7 @@ import org.junit.Test;
 import com.what3words.javawrapper.request.BoundingBox;
 import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.Suggestion;
 
@@ -34,9 +34,9 @@ public class AutosuggestClipTest {
                 .clipToCircle(new Coordinates(-91.000000,360.0), 100)
                 .execute();
         
-        Error error = autosuggest.getError();
+        What3WordsError error = autosuggest.getError();
         
-        assertEquals(APIResponse.Error.BAD_CLIP_TO_CIRCLE, error);
+        assertEquals(APIResponse.What3WordsError.BAD_CLIP_TO_CIRCLE, error);
     }
 
     @Test
@@ -147,9 +147,9 @@ public class AutosuggestClipTest {
                 .clipToBoundingBox(bbox)
                 .execute();
 
-        Error error = autosuggest.getError();
+        What3WordsError error = autosuggest.getError();
 
-        assertEquals(APIResponse.Error.BAD_CLIP_TO_BOUNDING_BOX, error);
+        assertEquals(APIResponse.What3WordsError.BAD_CLIP_TO_BOUNDING_BOX, error);
     }
 
     @Test
@@ -177,8 +177,8 @@ public class AutosuggestClipTest {
                 .clipToCountry("ZXC")
                 .execute();
         
-        Error error = response.getError();
+        What3WordsError error = response.getError();
 
-        assertEquals(APIResponse.Error.BAD_CLIP_TO_COUNTRY, error);
+        assertEquals(APIResponse.What3WordsError.BAD_CLIP_TO_COUNTRY, error);
     }
 }

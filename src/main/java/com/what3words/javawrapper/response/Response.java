@@ -1,6 +1,6 @@
 package com.what3words.javawrapper.response;
 
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 
 public class Response <T> {
     private transient APIResponse<T> response;
@@ -9,7 +9,7 @@ public class Response <T> {
         this.response = response;
     }
     
-    public Error getError() {
+    public What3WordsError getError() {
         return response.getError();
     }
     

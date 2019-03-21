@@ -11,7 +11,7 @@ import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.Suggestion;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 
 public class AutosuggestFocusTest {
     What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
@@ -40,9 +40,9 @@ public class AutosuggestFocusTest {
                 .focus(new Coordinates(151.2,0.2))
                 .execute();
         
-        Error error = response.getError();
+        What3WordsError error = response.getError();
 
-        assertEquals(APIResponse.Error.BAD_FOCUS, error);
+        assertEquals(APIResponse.What3WordsError.BAD_FOCUS, error);
     }
 
     @Test
@@ -51,9 +51,9 @@ public class AutosuggestFocusTest {
                 .focus(new Coordinates(-151.2,0.2))
                 .execute();
         
-        Error error = response.getError();
+        What3WordsError error = response.getError();
 
-        assertEquals(APIResponse.Error.BAD_FOCUS, error);
+        assertEquals(APIResponse.What3WordsError.BAD_FOCUS, error);
     }
 
     @Test

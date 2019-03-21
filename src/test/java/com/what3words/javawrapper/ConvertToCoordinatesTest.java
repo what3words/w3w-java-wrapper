@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.what3words.javawrapper.response.APIResponse;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ConvertToCoordinates;
 
 public class ConvertToCoordinatesTest {
@@ -15,9 +15,9 @@ public class ConvertToCoordinatesTest {
     public void invalid3waTest() {
         ConvertToCoordinates response = api.convertToCoordinates("filled").execute();
         
-        Error error = response.getError();
+        What3WordsError error = response.getError();
 
-        assertEquals(error, APIResponse.Error.BAD_WORDS);
+        assertEquals(error, APIResponse.What3WordsError.BAD_WORDS);
     }
     
     @Test

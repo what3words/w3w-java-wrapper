@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.ConvertTo3WA;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 
 public class ConvertTo3WATest {
     What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
@@ -16,9 +16,9 @@ public class ConvertTo3WATest {
     public void twoInvalidCoordsTest() {
         ConvertTo3WA response = api.convertTo3wa(new Coordinates(-200, -200)).execute();
         
-        Error error = response.getError();
+        What3WordsError error = response.getError();
 
-        assertEquals(APIResponse.Error.BAD_COORDINATES, error);
+        assertEquals(APIResponse.What3WordsError.BAD_COORDINATES, error);
     }
     
     @Test

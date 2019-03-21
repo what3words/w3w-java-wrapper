@@ -11,7 +11,7 @@ import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.Suggestion;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 
 public class AutosuggestClipPolygonTest {
     What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
@@ -50,9 +50,9 @@ public class AutosuggestClipPolygonTest {
                 .clipToPolygon(p1, p2, p3)
                 .execute();
         
-        Error error = autosuggest.getError();
+        What3WordsError error = autosuggest.getError();
 
-        assertEquals(APIResponse.Error.BAD_CLIP_TO_POLYGON, error);
+        assertEquals(APIResponse.What3WordsError.BAD_CLIP_TO_POLYGON, error);
     }
 
     @Test

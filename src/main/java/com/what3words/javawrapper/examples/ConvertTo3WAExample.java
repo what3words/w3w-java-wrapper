@@ -2,7 +2,7 @@ package com.what3words.javawrapper.examples;
 
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.request.Coordinates;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ConvertTo3WA;
 
 public class ConvertTo3WAExample {
@@ -18,18 +18,18 @@ public class ConvertTo3WAExample {
         if (words.isSuccessful()) { // the request was successful
             System.out.println("Words: " + words);
         } else {
-            Error error = words.getError();
+            What3WordsError error = words.getError();
 
-            if (error == Error.BAD_COORDINATES) { // the coordinates provided were bad
+            if (error == What3WordsError.BAD_COORDINATES) { // the coordinates provided were bad
                 System.out.println("BadCoordinates: " + error.getMessage());
 
-            } else if (error == Error.BAD_LANGUAGE) { // the language provided was bad 
+            } else if (error == What3WordsError.BAD_LANGUAGE) { // the language provided was bad 
                 System.out.println("BadLanguage: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {

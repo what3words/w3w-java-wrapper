@@ -1,7 +1,7 @@
 package com.what3words.javawrapper.examples;
 
 import com.what3words.javawrapper.What3WordsV3;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.AvailableLanguages;
 
 public class AvailableLanguagesExample {
@@ -14,12 +14,12 @@ public class AvailableLanguagesExample {
         if (languages.isSuccessful()) { // the request was successful
             System.out.println("Languages: " + languages);
         } else {
-            Error error = languages.getError();
+            What3WordsError error = languages.getError();
             
-            if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {

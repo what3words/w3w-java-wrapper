@@ -3,7 +3,7 @@ package com.what3words.javawrapper.examples;
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.request.AutosuggestInputType;
 import com.what3words.javawrapper.request.Coordinates;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.Autosuggest;
 
 public class AutosuggestExample {
@@ -18,15 +18,15 @@ public class AutosuggestExample {
         if (autosuggest.isSuccessful()) {
             System.out.println("Autosuggest: " + autosuggest);
         } else {
-            Error errorEnum = autosuggest.getError();
+            What3WordsError errorEnum = autosuggest.getError();
 
-            if (errorEnum == Error.BAD_N_RESULTS) { // The number of results provided was invalid
+            if (errorEnum == What3WordsError.BAD_N_RESULTS) { // The number of results provided was invalid
                 System.out.println("BadNResults: " + errorEnum.getMessage());
 
-            } else if (errorEnum == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (errorEnum == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + errorEnum.getMessage());
 
-            } else if (errorEnum == Error.NETWORK_ERROR) { // Network Error
+            } else if (errorEnum == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + errorEnum.getMessage());
 
             } else {
@@ -45,24 +45,24 @@ public class AutosuggestExample {
         if (autosuggest.isSuccessful()) {
             System.out.println("Autosuggest: " + autosuggest);
         } else {
-            Error error = autosuggest.getError();
+            What3WordsError error = autosuggest.getError();
 
-            if (error == Error.BAD_CLIP_TO_CIRCLE) { // The circle clip provided is not valid
+            if (error == What3WordsError.BAD_CLIP_TO_CIRCLE) { // The circle clip provided is not valid
                 System.out.println("BadClipToCircle: " + error.getMessage());
 
-            } else if (error == Error.BAD_CLIP_TO_BOUNDING_BOX) { // The bounding box clip provided is not valid
+            } else if (error == What3WordsError.BAD_CLIP_TO_BOUNDING_BOX) { // The bounding box clip provided is not valid
                 System.out.println("BadClipToBoundingBox: " + error.getMessage());
 
-            } else if (error == Error.BAD_CLIP_TO_COUNTRY) { // The country list provided is not valid
+            } else if (error == What3WordsError.BAD_CLIP_TO_COUNTRY) { // The country list provided is not valid
                 System.out.println("BadClipToCountry: " + error.getMessage());
 
-            } else if (error == Error.BAD_CLIP_TO_POLYGON) { // The polygon clip provided is not valid
+            } else if (error == What3WordsError.BAD_CLIP_TO_POLYGON) { // The polygon clip provided is not valid
                 System.out.println("BadClipToPolygon: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {
@@ -80,18 +80,18 @@ public class AutosuggestExample {
         if (autosuggest.isSuccessful()) {
             System.out.println("Autosuggest: " + autosuggest);
         } else {
-            Error error = autosuggest.getError();
+            What3WordsError error = autosuggest.getError();
 
-            if (error == Error.BAD_FOCUS) { // The focus provided is not valid
+            if (error == What3WordsError.BAD_FOCUS) { // The focus provided is not valid
                 System.out.println("BadFocus: " + error.getMessage());
 
-            } else if (error == Error.BAD_N_FOCUS_RESULTS) { // The number of results to provide a focus to is not valid
+            } else if (error == What3WordsError.BAD_N_FOCUS_RESULTS) { // The number of results to provide a focus to is not valid
                 System.out.println("BadNFocusResults: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {
@@ -108,21 +108,21 @@ public class AutosuggestExample {
         if (autosuggest.isSuccessful()) {
             System.out.println("Autosuggest: " + autosuggest);
         } else {
-            Error error = autosuggest.getError();
+            What3WordsError error = autosuggest.getError();
 
-            if (error == Error.BAD_INPUT) { // The input is not valid, given the input type provided
+            if (error == What3WordsError.BAD_INPUT) { // The input is not valid, given the input type provided
                 System.out.println("BadInput: " + error.getMessage());
 
-            } else if (error == Error.BAD_INPUT_TYPE) { // The input type is not valid
+            } else if (error == What3WordsError.BAD_INPUT_TYPE) { // The input type is not valid
                 System.out.println("BadInputType: " + error.getMessage());
 
-            } else if (error == Error.BAD_LANGUAGE) { // The provided language is not valid
+            } else if (error == What3WordsError.BAD_LANGUAGE) { // The provided language is not valid
                 System.out.println("BadLanguage: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else {

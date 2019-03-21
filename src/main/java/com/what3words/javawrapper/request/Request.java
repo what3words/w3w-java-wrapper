@@ -7,7 +7,7 @@ import com.google.gson.stream.MalformedJsonException;
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.response.APIError;
 import com.what3words.javawrapper.response.APIResponse;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ErrorResponse;
 import com.what3words.javawrapper.response.Response;
 
@@ -58,11 +58,11 @@ public class Request<T extends Response<T>> {
         APIError error = response.getAPIError();
         if (error != null) {
             // look for the error within the available error enums
-            Error errorEnum = Error.get(error.getCode());
+            What3WordsError errorEnum = What3WordsError.get(error.getCode());
             
             // Haven't found the error, return UNKNOWN_ERROR
             if (errorEnum == null) {
-                errorEnum = Error.UNKNOWN_ERROR;
+                errorEnum = What3WordsError.UNKNOWN_ERROR;
             }
             
             errorEnum.setMessage(error.getMessage());

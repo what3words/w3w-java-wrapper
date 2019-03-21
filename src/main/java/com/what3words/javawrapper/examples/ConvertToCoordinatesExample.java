@@ -1,7 +1,7 @@
 package com.what3words.javawrapper.examples;
 
 import com.what3words.javawrapper.What3WordsV3;
-import com.what3words.javawrapper.response.APIResponse.Error;
+import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ConvertToCoordinates;
 
 public class ConvertToCoordinatesExample {
@@ -16,15 +16,15 @@ public class ConvertToCoordinatesExample {
             System.out.println("Coordinates: " + coordinates);
 
         } else { // the request was not successful
-            Error error = coordinates.getError();
+            What3WordsError error = coordinates.getError();
 
-            if (error == Error.BAD_WORDS) { // The three word address provided is invalid
+            if (error == What3WordsError.BAD_WORDS) { // The three word address provided is invalid
                 System.out.println("BadWords: " + error.getMessage());
 
-            } else if (error == Error.INTERNAL_SERVER_ERROR) { // Server Error
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
                 System.out.println("InternalServerError: " + error.getMessage());
 
-            } else if (error == Error.NETWORK_ERROR) { // Network Error
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
             } else { // Unknown Error

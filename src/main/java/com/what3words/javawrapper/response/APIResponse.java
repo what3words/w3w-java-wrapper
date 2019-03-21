@@ -11,7 +11,7 @@ public class APIResponse<T> {
     private Response<T> response;
     @SerializedName("error")
     private APIError apiError;
-    private Error error;
+    private What3WordsError error;
     
     public APIResponse (Response<T> response) {
         this.response = response;
@@ -29,11 +29,11 @@ public class APIResponse<T> {
         return response == null ? null : response.body();
     }
 
-    public Error getError() {
+    public What3WordsError getError() {
         return error;
     }
 
-    public void setError(Error errorEnum) {
+    public void setError(What3WordsError errorEnum) {
         this.error = errorEnum;
     }
     
@@ -45,7 +45,7 @@ public class APIResponse<T> {
         this.apiError = error;
     }
     
-    public enum Error {
+    public enum What3WordsError {
         BAD_COORDINATES("BadCoordinates"),
         BAD_LANGUAGE("BadLanguage"),
         
@@ -72,15 +72,15 @@ public class APIResponse<T> {
         private final String key;
         private String message;
 
-        private static final Map<String, Error> lookup = new HashMap<String, Error>();
+        private static final Map<String, What3WordsError> lookup = new HashMap<String, What3WordsError>();
 
         static {
-            for (Error d : Error.values()) {
+            for (What3WordsError d : What3WordsError.values()) {
                 lookup.put(d.getKey(), d);
             }
         }
 
-        private Error(String key) {
+        private What3WordsError(String key) {
             this.key = key;
         }
 
@@ -95,7 +95,7 @@ public class APIResponse<T> {
             return key;
         }
 
-        public static Error get(String key) {
+        public static What3WordsError get(String key) {
             return lookup.get(key);
         }
     }
