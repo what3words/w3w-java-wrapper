@@ -6,7 +6,7 @@
 
 	<groupId>com.what3words</groupId>
 	<artifactId>w3w-java-wrapper</artifactId>
-	<version>3.0.1</version>
+	<version>3.0.2</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -133,5 +133,11 @@
                 </executions>
             </plugin>
 		</plugins>
+		<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 	</build>
 </project>
