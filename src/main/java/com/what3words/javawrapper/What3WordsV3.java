@@ -23,7 +23,7 @@ public class What3WordsV3 {
     public static final String HEADER_CONTENT_TYPE = "Content-Type";
     public static final String CONTENT_TYPE_JSON = "application/json";
     public static final String HEADER_WHAT3WORDS_API_KEY = "X-Api-Key";
-    public static final String HEADER_USER_AGENT = "User-Agent";
+    public static final String W3W_WRAPPER = "X-W3W-Wrapper";
 
     private String apiKey;
     private String endpoint;

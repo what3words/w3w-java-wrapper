@@ -43,7 +43,7 @@ public class What3WordsV3Interceptor implements Interceptor {
         // set required content type, api key and request specific API version
         builder.header(What3WordsV3.HEADER_CONTENT_TYPE, What3WordsV3.CONTENT_TYPE_JSON);
         builder.header(What3WordsV3.HEADER_WHAT3WORDS_API_KEY, this.apiKey);
-        builder.header(What3WordsV3.HEADER_USER_AGENT, this.userAgent);
+        builder.header(What3WordsV3.W3W_WRAPPER, this.userAgent);
 
         return chain.proceed(builder.build());
     }
