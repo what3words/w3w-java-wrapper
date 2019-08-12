@@ -24,9 +24,9 @@ public class What3WordsV3 {
     public static final String CONTENT_TYPE_JSON = "application/json";
     public static final String HEADER_WHAT3WORDS_API_KEY = "X-Api-Key";
     public static final String W3W_WRAPPER = "X-W3W-Wrapper";
+    public static final String ANDROID_CERT_HEADER = "X-Android-Cert";
+    public static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
 
-    private String apiKey;
-    private String endpoint;
     private Retrofit retrofit;
     private OkHttpClient okHttpClient;
 
@@ -36,17 +36,7 @@ public class What3WordsV3 {
      * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
      */
     public What3WordsV3(String apiKey) {
-        this.apiKey = apiKey;
-        endpoint = DEFAULT_ENDPOINT;
-
-        okHttpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new What3WordsV3Interceptor(apiKey))
-                .build();
-
-        retrofit = new Retrofit.Builder()
-                .baseUrl(endpoint)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(getOkHttpClientInstance()).build();
+        this(apiKey, DEFAULT_ENDPOINT);
     }
     
     /**
@@ -56,11 +46,35 @@ public class What3WordsV3 {
      * @param endpoint override the default public API endpoint
      */
     public What3WordsV3(String apiKey, String endpoint) {
-        this.apiKey = apiKey;
-        this.endpoint = endpoint;
+        this(apiKey, endpoint, null, null);
+    }
 
+    /**
+     * Get a new API manager instance.
+     *
+     * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
+     * @param packageName For use within Android applications to provide the application package name as part of API key restriction
+     * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
+     */
+    protected What3WordsV3(String apiKey, String packageName, String signature) {
+        setupHttpClient(apiKey, DEFAULT_ENDPOINT, packageName, signature);
+    }
+
+    /**
+     * Get a new API manager instance.
+     *
+     * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
+     * @param endpoint override the default public API endpoint
+     * @param packageName For use within Android applications to provide the application package name as part of API key restriction
+     * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
+     */
+    protected What3WordsV3(String apiKey, String endpoint, String packageName, String signature) {
+        setupHttpClient(apiKey, endpoint, packageName, signature);
+    }
+
+    private void setupHttpClient(String apiKey, String endpoint, String packageName, String signature) {
         okHttpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new What3WordsV3Interceptor(apiKey))
+                .addNetworkInterceptor(new What3WordsV3Interceptor(apiKey, packageName, signature))
                 .build();
 
         retrofit = new Retrofit.Builder()
@@ -143,7 +157,7 @@ public class What3WordsV3 {
         return getRetrofitInstance().create(What3WordsV3Service.class);
     }
     
-    String apiKey() {
-        return apiKey;
-    }
+//    String apiKey() {
+//        return apiKey;
+//    }
 }
