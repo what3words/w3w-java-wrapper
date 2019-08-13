@@ -16,14 +16,14 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 <dependency>
   <groupId>com.what3words</groupId>
   <artifactId>w3w-java-wrapper</artifactId>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
 </dependency>
 ```
 
 ### Gradle
 
-```groovy
-implementation 'com.what3words:w3w-java-wrapper:3.0.4'
+```
+implementation 'com.what3words:w3w-java-wrapper:3.0.5'
 ```
 
 ## Documentation
@@ -59,53 +59,6 @@ if (coordinates.isSuccessful()) { // the request was successful
 
     }
 }
-```
-
-## Android
-
-### Manifest Permission
-
-The `android.permission.INTERNET` permission is needed in order to perform network operations in your application. Add the following permission to the `AndroidManifest.xml` file.
-
-`<uses-permission android:name="android.permission.INTERNET" />`
-
-### Main Thread Loop
-
-Because it is not possible to perform a networking operation on the main application thread, API calls need to be made in a background thread. It is recomended to use 
-[IntentService](https://developer.android.com/reference/android/app/IntentService) functionality to perform asynchronous requests in a production application, however,
-for simple demonstration purposes API requests can be made in a simple child thread.
-
-```Java
-new Thread(new Runnable() {
-    public void run() {
-        // For all requests a what3words API key is needed
-        What3WordsV3 api = new What3WordsV3("what3words-api-key");
-        
-        // Create and execute a request with the 3 word address such as "filled.count.soap"
-        ConvertToCoordinates coordinates = api.convertToCoordinates("filled.count.soap").execute();
-        
-        if (coordinates.isSuccessful()) { // the request was successful
-            System.out.println("Coordinates: " + coordinates);
-        
-        } else { // the request was not successful
-            What3WordsError error = coordinates.getError();
-        
-            if (error == What3WordsError.BAD_WORDS) { // The three word address provided is invalid
-                System.out.println("BadWords: " + error.getMessage());
-        
-            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
-                System.out.println("InternalServerError: " + error.getMessage());
-        
-            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
-                System.out.println("NetworkError: " + error.getMessage());
-        
-            } else { // Unknown Error
-                System.out.println(error + ": " + error.getMessage());
-        
-            }
-        }
-    }
-}).start();
 ```
 
 ## API Methods
