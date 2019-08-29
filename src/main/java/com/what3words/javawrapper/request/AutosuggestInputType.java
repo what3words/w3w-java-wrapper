@@ -22,7 +22,17 @@ public enum AutosuggestInputType {
      * Does not handle text in languages in which words are not separated by spaces, e.g. Chinese.
      * Language detection is disabled, so lang must be set for non-English input.
      */
-    NMDP_ASR ("nmdp-asr");
+    NMDP_ASR ("nmdp-asr"),
+    /**
+     * 
+     * 
+     * Text output from speech recognition software. E.g. "index home raft".
+     * This input type handles spaces between words.
+     * Users should not pronounce 'dot' when speaking a 3 word address.
+     * Does not handle text in languages in which words are not separated by spaces, e.g. Chinese.
+     * Language detection is disabled, so lang must be set.
+     */
+    GENERIC_VOICE ("generic-voice");
 
     private final String name;       
 

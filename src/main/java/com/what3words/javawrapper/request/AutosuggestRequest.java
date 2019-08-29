@@ -18,6 +18,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
     private String clipToPolygon;
     private String inputType;
     private String language;
+    private String preferLand;
 
     private AutosuggestRequest(Builder builder) {
         super(builder.api);
@@ -32,10 +33,11 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         clipToPolygon = builder.clipToPolygon;
         inputType = builder.inputType;
         language = builder.language;
+        preferLand = builder.preferLand;
     }
 
     private Autosuggest execute() {
-        return super.execute(api.what3words().autosuggest(input, nResults, focus, nFocusResults, clipToCountry, clipToBoundingBox, clipToCircle, clipToPolygon, inputType, language), Autosuggest.class);
+        return super.execute(api.what3words().autosuggest(input, nResults, focus, nFocusResults, clipToCountry, clipToBoundingBox, clipToCircle, clipToPolygon, inputType, language, preferLand), Autosuggest.class);
     }
     
     public static class Builder extends AbstractBuilder<Autosuggest> {
@@ -49,6 +51,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         private String clipToPolygon;
         private String inputType;
         private String language;
+        private String preferLand;
         
         public Builder(What3WordsV3 api, String input) {
             super(api);
@@ -168,6 +171,11 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder inputType(AutosuggestInputType type) {
             this.inputType = type.toString();
+            return this;
+        }
+        
+        public Builder preferLand(boolean preferLand) {
+            this.preferLand = Boolean.toString(preferLand);
             return this;
         }
 

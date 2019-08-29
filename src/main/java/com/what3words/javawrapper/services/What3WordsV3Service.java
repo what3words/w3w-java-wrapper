@@ -28,7 +28,8 @@ public interface What3WordsV3Service {
             @Query("clip-to-circle") String clipToCircle,
             @Query("clip-to-polygon") String clipToPolygon,
             @Query("input-type") String inputType,
-            @Query("language") String lang
+            @Query("language") String lang,
+            @Query("prefer-land") String preferLand
             );
     
     @GET("grid-section")
