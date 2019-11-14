@@ -32,7 +32,15 @@ public enum AutosuggestInputType {
      * Does not handle text in languages in which words are not separated by spaces, e.g. Chinese.
      * Language detection is disabled, so lang must be set.
      */
-    GENERIC_VOICE ("generic-voice");
+    GENERIC_VOICE ("generic-voice"),
+    /**
+     * Text from Speechmatics voice recognition.
+     * Use with text from any other source is unsupported and results may not be as expected.
+     * This should only be used with grammars provided by what3words ltd;
+     * using other grammars will cause run-time exceptions.
+     * Language detection is disabled, so language must be set.
+     */
+    SPEECHMATICS("speechmatics");
 
     private final String name;       
 
