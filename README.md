@@ -16,14 +16,14 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 <dependency>
   <groupId>com.what3words</groupId>
   <artifactId>w3w-java-wrapper</artifactId>
-  <version>3.1.1</version>
+  <version>3.1.2</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation 'com.what3words:w3w-java-wrapper:3.1.1'
+implementation 'com.what3words:w3w-java-wrapper:3.1.2'
 ```
 
 ## Documentation
@@ -35,6 +35,18 @@ See the what3words public API [documentation](https://docs.what3words.com/api/v3
 ```Java
 // For all requests a what3words API key is needed
 What3WordsV3 api = new What3WordsV3("what3words-api-key");
+
+// In the case that you run our Enterprise Suite API Server yourself, you may specify the URL to your own server like so:
+//What3WordsV3 api = new What3WordsV3("what3words-api-key", "https://api.yourserver.com/v3/");
+
+/**
+ * Additionally, if you run the Enterprise Suite API Server there is another optional setup() parameter: customHeaders. 
+ * Use this if you need to send custom headers to your own server:
+ */
+//Map<String, String> headers = new HashMap<String, String>();
+//headers.put("Name1", "Value1");
+//headers.put("Name2", "Value2");
+//What3WordsV3 api = new What3WordsV3("what3words-api-key", "https://api.yourserver.com/v3/", headers);
 
 // Create and execute a request with the 3 word address such as "filled.count.soap"
 ConvertToCoordinates coordinates = api.convertToCoordinates("filled.count.soap").execute();

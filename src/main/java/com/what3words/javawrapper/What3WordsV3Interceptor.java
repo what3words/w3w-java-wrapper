@@ -2,6 +2,8 @@ package com.what3words.javawrapper;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 import okhttp3.Interceptor;
@@ -13,12 +15,14 @@ public class What3WordsV3Interceptor implements Interceptor {
     private String userAgent;
     private String packageName;
     private String signature;
+    private Map<String, String> headers;
 
-    public What3WordsV3Interceptor(String apiKey, String packageName, String signature) {
+    public What3WordsV3Interceptor(String apiKey, String packageName, String signature, Map<String, String> headers) {
         this.apiKey = apiKey;
         this.userAgent = getUserAgent();
         this.packageName = packageName;
         this.signature = signature;
+        this.headers = headers;
     }
     
     private String getUserAgent() {
@@ -48,6 +52,15 @@ public class What3WordsV3Interceptor implements Interceptor {
         builder.header(What3WordsV3.HEADER_CONTENT_TYPE, What3WordsV3.CONTENT_TYPE_JSON);
         builder.header(What3WordsV3.HEADER_WHAT3WORDS_API_KEY, this.apiKey);
         builder.header(What3WordsV3.W3W_WRAPPER, this.userAgent);
+        
+        // add any custom headers
+        if (headers != null) {
+            for (Iterator<String> it = headers.keySet().iterator(); it.hasNext();) {
+                String name = it.next();
+                String value = headers.get(name);
+                builder.header(name, value);
+            }
+        }
         
         if (packageName != null) {
             builder.header(What3WordsV3.ANDROID_PACKAGE_HEADER, this.packageName);

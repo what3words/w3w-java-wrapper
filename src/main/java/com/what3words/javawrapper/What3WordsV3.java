@@ -1,5 +1,7 @@
 package com.what3words.javawrapper;
 
+import java.util.Map;
+
 import com.what3words.javawrapper.request.AutosuggestRequest;
 import com.what3words.javawrapper.request.AvailableLanguagesRequest;
 import com.what3words.javawrapper.request.BoundingBox;
@@ -46,7 +48,18 @@ public class What3WordsV3 {
      * @param endpoint override the default public API endpoint
      */
     public What3WordsV3(String apiKey, String endpoint) {
-        this(apiKey, endpoint, null, null);
+        this(apiKey, endpoint, null, null, null);
+    }
+    
+    /**
+     * Get a new API manager instance.
+     *
+     * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
+     * @param endpoint override the default public API endpoint
+     * @param headers add any custom HTTP headers to send in each request
+     */
+    public What3WordsV3(String apiKey, String endpoint, Map<String, String> headers) {
+        this(apiKey, endpoint, null, null, headers);
     }
 
     /**
@@ -57,7 +70,7 @@ public class What3WordsV3 {
      * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
      */
     protected What3WordsV3(String apiKey, String packageName, String signature) {
-        setupHttpClient(apiKey, DEFAULT_ENDPOINT, packageName, signature);
+        setupHttpClient(apiKey, DEFAULT_ENDPOINT, packageName, signature, null);
     }
 
     /**
@@ -68,13 +81,13 @@ public class What3WordsV3 {
      * @param packageName For use within Android applications to provide the application package name as part of API key restriction
      * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
      */
-    protected What3WordsV3(String apiKey, String endpoint, String packageName, String signature) {
-        setupHttpClient(apiKey, endpoint, packageName, signature);
+    protected What3WordsV3(String apiKey, String endpoint, String packageName, String signature, Map<String, String> headers) {
+        setupHttpClient(apiKey, endpoint, packageName, signature, headers);
     }
 
-    private void setupHttpClient(String apiKey, String endpoint, String packageName, String signature) {
+    private void setupHttpClient(String apiKey, String endpoint, String packageName, String signature, Map<String, String> headers) {
         okHttpClient = new OkHttpClient.Builder()
-                .addNetworkInterceptor(new What3WordsV3Interceptor(apiKey, packageName, signature))
+                .addNetworkInterceptor(new What3WordsV3Interceptor(apiKey, packageName, signature, headers))
                 .build();
 
         retrofit = new Retrofit.Builder()
