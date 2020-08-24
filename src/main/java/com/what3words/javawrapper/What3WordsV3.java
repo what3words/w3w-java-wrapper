@@ -77,6 +77,18 @@ public class What3WordsV3 {
      * Get a new API manager instance.
      *
      * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
+     * @param packageName For use within Android applications to provide the application package name as part of API key restriction
+     * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
+     * @param headers add any custom HTTP headers to send in each request
+     */
+    protected What3WordsV3(String apiKey, String packageName, String signature, Map<String, String> headers) {
+        setupHttpClient(apiKey, DEFAULT_ENDPOINT, packageName, signature, headers);
+    }
+
+    /**
+     * Get a new API manager instance.
+     *
+     * @param apiKey Your what3words API key obtained from https://accounts.what3words.com
      * @param endpoint override the default public API endpoint
      * @param packageName For use within Android applications to provide the application package name as part of API key restriction
      * @param signature For use within Android applications to provide the application SHA1 signature as part of API key restriction
