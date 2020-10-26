@@ -4,7 +4,7 @@ public class Suggestion {
     private String country;
     private String nearestPlace;
     private String words;
-    private int distanceToFocusKm;
+    private Integer distanceToFocusKm;
     private int rank;
     private String language;
 
@@ -20,7 +20,7 @@ public class Suggestion {
         return words;
     }
 
-    public int getDistanceToFocusKm() {
+    public Integer getDistanceToFocusKm() {
         return distanceToFocusKm;
     }
 
