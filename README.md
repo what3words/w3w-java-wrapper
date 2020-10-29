@@ -4,7 +4,7 @@ A Java library to use the [what3words v3 API](https://docs.what3words.com/api/v3
 
 API methods are grouped into a single service object which can be centrally managed by a What3WordsV3 instance. It will act as a factory for all of the API endpoints and will automatically initialize them with your API key.
 
-To obtain an API key, please visit [https://accounts.what3words.com/](https://accounts.what3words.com/) and sign up for an account.
+To obtain an API key, please visit [https://what3words.com/select-plan](https://what3words.com/select-plan) and sign up for an account.
 
 ## Installation
 
