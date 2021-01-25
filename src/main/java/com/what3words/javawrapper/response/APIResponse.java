@@ -66,8 +66,14 @@ public class APIResponse<T> {
         
         INTERNAL_SERVER_ERROR("InternalServerError"),
         INVALID_KEY("InvalidKey"),
+        SUSPENDED_KEY("SuspendedKey"),
         UNKNOWN_ERROR("UnknownError"),
-        NETWORK_ERROR("NetworkError");
+        NETWORK_ERROR("NetworkError"),
+
+        INVALID_API_VERSION("InvalidApiVersion"),
+        INVALID_REFERRER("InvalidReferrer"),
+        INVALID_IP_ADDRESS("InvalidIpAddress"),
+        INVALID_APP_CREDENTIALS("InvalidAppCredentials");
 
         private final String key;
         private String message;
