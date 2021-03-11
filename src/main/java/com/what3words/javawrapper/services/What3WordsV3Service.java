@@ -1,5 +1,6 @@
 package com.what3words.javawrapper.services;
 
+import com.what3words.javawrapper.response.AutosuggestWithCoordinates;
 import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.AvailableLanguages;
 import com.what3words.javawrapper.response.ConvertTo3WA;
@@ -19,6 +20,21 @@ public interface What3WordsV3Service {
     
     @GET("autosuggest")
     Call<Autosuggest> autosuggest(
+            @Query("input") String input, 
+            @Query("n-results") String nResults, 
+            @Query("focus") String focus,
+            @Query("n-focus-results") String nFocusResults,
+            @Query("clip-to-country") String clipToCountry,
+            @Query("clip-to-bounding-box") String clipToBoundingBox,
+            @Query("clip-to-circle") String clipToCircle,
+            @Query("clip-to-polygon") String clipToPolygon,
+            @Query("input-type") String inputType,
+            @Query("language") String lang,
+            @Query("prefer-land") String preferLand
+            );
+    
+    @GET("autosuggest-with-coordinates")
+    Call<AutosuggestWithCoordinates> autosuggestWithCoordinates(
             @Query("input") String input, 
             @Query("n-results") String nResults, 
             @Query("focus") String focus,

@@ -3,6 +3,7 @@ package com.what3words.javawrapper;
 import java.util.Map;
 
 import com.what3words.javawrapper.request.AutosuggestRequest;
+import com.what3words.javawrapper.request.AutosuggestWithCoordinatesRequest;
 import com.what3words.javawrapper.request.AvailableLanguagesRequest;
 import com.what3words.javawrapper.request.BoundingBox;
 import com.what3words.javawrapper.request.ConvertTo3WARequest;
@@ -143,6 +144,20 @@ public class What3WordsV3 {
      */
     public AutosuggestRequest.Builder autosuggest(String input) {
         return new AutosuggestRequest.Builder(this, input);
+    }
+    
+    /**
+     * Autosuggest with coordinates can take a slightly incorrect 3 word address, and suggest a list of valid 3 word addresses. It has powerful 
+     * features which can, for example, optionally limit results to a country or area, and prefer results which are near the user. 
+     * In addition to all the functionality provided by Autosuggest, Autosuggest with coordinates also returns coordinates within each suggestion.
+     * For full details, please see the complete API documentation at https://docs.what3words.com/api/v3/#autosuggest
+     * 
+     * @param input The full or partial 3 word address to obtain suggestions for. At minimum this must be the first two complete 
+     * words plus at least one character from the third word.
+     * @return a {@link AutosuggestRequest.Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+     */
+    public AutosuggestWithCoordinatesRequest.Builder autosuggestWithCoordinates(String input) {
+        return new AutosuggestWithCoordinatesRequest.Builder(this, input);
     }
     
     /**
