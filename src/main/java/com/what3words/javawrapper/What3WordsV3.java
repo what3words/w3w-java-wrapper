@@ -75,6 +75,7 @@ public class What3WordsV3 {
      * @param endpoint    override the default public API endpoint
      * @param packageName For use within Android applications to provide the application package name as part of API key restriction
      * @param signature   For use within Android applications to provide the application SHA1 signature as part of API key restriction
+     * @param headers     add any custom HTTP headers to send in each request
      */
     protected What3WordsV3(String apiKey, String endpoint, String packageName, String signature, Map<String, String> headers) {
         setupHttpClient(apiKey, endpoint, packageName, signature, headers);
@@ -159,10 +160,10 @@ public class What3WordsV3 {
      * It should be called once in conjunction with autosuggest or autosuggest-with-coordinates.
      * when an end user picks a what3words address from the suggestions presented to them.
      *
-     * @param rawInput The full or partial 3 word address used on the autosuggest or autosuggest-with-coordinates call.</param>
-     * @param sourceApi The source of the selected autosuggest, can be 'text' or 'voice'.</param>
-     * @param selection The 3 word address of the selected suggestion.</param>
-     * @param rank The rank of the selected suggestion.</param>
+     * @param rawInput The full or partial 3 word address used on the autosuggest or autosuggest-with-coordinates call.
+     * @param sourceApi The source of the selected autosuggest, can be 'SourceApi.TEXT' or 'SourceApi.VOICE'.
+     * @param selection The 3 word address of the selected suggestion.
+     * @param rank The rank of the selected suggestion.
      * @return a {@link AutosuggestSelectionRequest.Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
      */
     public AutosuggestSelectionRequest.Builder autosuggestionSelection(String rawInput, String selection, int rank, SourceApi sourceApi) {
