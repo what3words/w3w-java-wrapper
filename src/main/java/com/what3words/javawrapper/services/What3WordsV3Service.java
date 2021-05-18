@@ -1,11 +1,6 @@
 package com.what3words.javawrapper.services;
 
-import com.what3words.javawrapper.response.AutosuggestWithCoordinates;
-import com.what3words.javawrapper.response.Autosuggest;
-import com.what3words.javawrapper.response.AvailableLanguages;
-import com.what3words.javawrapper.response.ConvertTo3WA;
-import com.what3words.javawrapper.response.ConvertToCoordinates;
-import com.what3words.javawrapper.response.GridSection;
+import com.what3words.javawrapper.response.*;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -47,6 +42,24 @@ public interface What3WordsV3Service {
             @Query("language") String lang,
             @Query("prefer-land") String preferLand
             );
+
+    @GET("autosuggest-selection")
+    Call<Void> autosuggestSelection(
+            @Query("raw-input") String rawInput,
+            @Query("selection") String selection,
+            @Query("rank") String rank,
+            @Query("source-api") String sourceApi,
+            @Query("n-results") String nResults,
+            @Query("focus") String focus,
+            @Query("n-focus-results") String nFocusResults,
+            @Query("clip-to-country") String clipToCountry,
+            @Query("clip-to-bounding-box") String clipToBoundingBox,
+            @Query("clip-to-circle") String clipToCircle,
+            @Query("clip-to-polygon") String clipToPolygon,
+            @Query("input-type") String inputType,
+            @Query("language") String lang,
+            @Query("prefer-land") String preferLand
+    );
     
     @GET("grid-section")
     Call<GridSection> gridSection(@Query("bounding-box") String bbox);
