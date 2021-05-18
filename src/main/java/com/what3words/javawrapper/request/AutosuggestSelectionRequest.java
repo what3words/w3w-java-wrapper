@@ -131,12 +131,12 @@ public class AutosuggestSelectionRequest {
         private String language;
         private String preferLand;
 
-        public Builder(What3WordsV3 api, String rawInput, String selection, int rank, String sourceApi) {
+        public Builder(What3WordsV3 api, String rawInput, String selection, int rank, SourceApi sourceApi) {
             super(api);
             this.rawInput = rawInput;
             this.selection = selection;
             this.rank = String.valueOf(rank);
-            this.sourceApi = sourceApi;
+            this.sourceApi = sourceApi.toString().toLowerCase();
         }
 
         /**

@@ -165,7 +165,7 @@ public class What3WordsV3 {
      * @param rank The rank of the selected suggestion.</param>
      * @return a {@link AutosuggestSelectionRequest.Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
      */
-    public AutosuggestSelectionRequest.Builder autosuggestionSelection(String rawInput, String selection, int rank, String sourceApi) {
+    public AutosuggestSelectionRequest.Builder autosuggestionSelection(String rawInput, String selection, int rank, SourceApi sourceApi) {
         return new AutosuggestSelectionRequest.Builder(this, rawInput, selection, rank, sourceApi);
     }
 
