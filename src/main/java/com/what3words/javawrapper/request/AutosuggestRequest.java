@@ -3,7 +3,6 @@ package com.what3words.javawrapper.request;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.response.APIResponse;
