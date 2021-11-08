@@ -3,6 +3,7 @@ package com.what3words.javawrapper;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.what3words.javawrapper.request.AutosuggestOptions;
 import com.what3words.javawrapper.request.SourceApi;
 import com.what3words.javawrapper.response.AutosuggestSelection;
 import org.junit.Test;
@@ -20,6 +21,26 @@ public class AutosuggestWithCoordinatesTest {
 		/** autosuggest with coordinates, limiting the number of results to three */
 		AutosuggestWithCoordinates autosuggest = api.autosuggestWithCoordinates("filled.count.soap").nResults(3)
 				.focus(new Coordinates(51, 1)).execute();
+
+		assertTrue(autosuggest.isSuccessful());
+
+		SuggestionWithCoordinates suggestionsWithCoordinates = autosuggest.getSuggestions().get(0);
+
+		assertEquals(suggestionsWithCoordinates.getCoordinates().getLat(), 51.520847, 0);
+		assertEquals(suggestionsWithCoordinates.getCoordinates().getLng(), -0.195521, 0);
+
+		AutosuggestSelection selection = api.autosuggestionSelection("filled.count.soap", suggestionsWithCoordinates.getWords(), suggestionsWithCoordinates.getRank(), SourceApi.TEXT).focus(new Coordinates(51, 1)).execute();
+		assertTrue(selection.isSuccessful());
+	}
+
+	@Test
+	public void testAutosuggestWithCoordinatesAndOptions() {
+
+		/** autosuggest with coordinates, limiting the number of results to three */
+		AutosuggestOptions options = new AutosuggestOptions();
+		options.setFocus(new Coordinates(51, 1));
+		AutosuggestWithCoordinates autosuggest = api.autosuggestWithCoordinates("filled.count.soap").nResults(3)
+				.options(options).execute();
 
 		assertTrue(autosuggest.isSuccessful());
 

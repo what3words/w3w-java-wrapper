@@ -144,7 +144,7 @@ public class AutosuggestSelectionRequest {
          * this will be truncated to the maximum. The default is 3
          *
          * @param n the number of AutoSuggest results to return
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder nResults(int n) {
             this.nResults = String.valueOf(n);
@@ -156,7 +156,7 @@ public class AutosuggestSelectionRequest {
          * give preference to those near the <code>focus</code>. For convenience, longitude is allowed to wrap around the 180 line, so 361 is equivalent to 1.
          *
          * @param coordinates the focus to use
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder focus(Coordinates coordinates) {
             this.focus = String.valueOf(coordinates.lat) + "," + String.valueOf(coordinates.lng);
@@ -170,7 +170,7 @@ public class AutosuggestSelectionRequest {
          * which will return just one focussed result and the rest unfocussed.
          *
          * @param n number of results within the results set which will have a focus
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder nFocusResults(int n) {
             this.nFocusResults = String.valueOf(n);
@@ -183,7 +183,7 @@ public class AutosuggestSelectionRequest {
          *
          * @param centre the centre of the circle
          * @param radius the radius of the circle in kilometres
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder clipToCircle(Coordinates centre, double radius) {
             this.clipToCircle = String.valueOf(centre.lat) + "," + String.valueOf(centre.lng) + "," + String.valueOf(radius);
@@ -196,7 +196,7 @@ public class AutosuggestSelectionRequest {
          * accepting up to 25 pairs.
          *
          * @param polygon the polygon to clip results too
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder clipToPolygon(Coordinates... polygon) {
             List<String> coordinatesList = new ArrayList<>();
@@ -212,7 +212,7 @@ public class AutosuggestSelectionRequest {
          * Restrict autosuggest-with-coordinates results to a <code>BoundingBox</code>.
          *
          * @param boundingBox <code>BoundingBox</code> to clip results too
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder clipToBoundingBox(BoundingBox boundingBox) {
             this.clipToBoundingBox = String.valueOf(boundingBox.sw.lat) + "," + String.valueOf(boundingBox.sw.lng) + "," +
@@ -227,7 +227,7 @@ public class AutosuggestSelectionRequest {
          * returns no results.
          *
          * @param countryCodes countries to clip results too
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder clipToCountry(String... countryCodes) {
             this.clipToCountry = join(",", countryCodes);
@@ -240,7 +240,7 @@ public class AutosuggestSelectionRequest {
          * language must always be specified.
          *
          * @param language the fallback language
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder language(String language) {
             this.language = language;
@@ -252,7 +252,7 @@ public class AutosuggestSelectionRequest {
          * or <code>AutosuggestInputType.NMDP_ASR</code>. See voice recognition section within the developer docs for more details https://docs.what3words.com/api/v3/#voice.
          *
          * @param type the AutosuggestInputType
-         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-with-coordinates</code> API request
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
          */
         public Builder inputType(AutosuggestInputType type) {
             this.inputType = type.toString();
@@ -261,6 +261,31 @@ public class AutosuggestSelectionRequest {
 
         public Builder preferLand(boolean preferLand) {
             this.preferLand = Boolean.toString(preferLand);
+            return this;
+        }
+
+        /**
+         * Set all options at once using <code>AutosuggestOptions</code>
+         *
+         * @param options the AutoSuggestOptions
+         * @return a {@link AutosuggestRequest.Builder} instance suitable for invoking a <code>autosuggest</code> API request
+         */
+        public Builder options(AutosuggestOptions options) {
+            if (options.getNResults() != null) nResults(options.getNResults());
+            if (options.getFocus() != null) focus(options.getFocus());
+            if (options.getNFocusResults() != null) nFocusResults(options.getNFocusResults());
+            if (options.getClipToCountry() != null) clipToCountry(options.getClipToCountry().toArray(new String[]{}));
+            if (options.getClipToCircle() != null) {
+                if (options.getClipToCircleRadius() != null)
+                    clipToCircle(options.getClipToCircle(), options.getClipToCircleRadius());
+                else clipToCircle(options.getClipToCircle(), 1.0);
+            }
+            if (options.getClipToPolygon() != null)
+                clipToPolygon(options.getClipToPolygon().toArray(new Coordinates[]{}));
+            if (options.getClipToBoundingBox() != null) clipToBoundingBox(options.getClipToBoundingBox());
+            if (options.getLanguage() != null) language(options.getLanguage());
+            if (options.getInputType() != null) inputType(options.getInputType());
+            if (options.getPreferLand() != null) preferLand(options.getPreferLand());
             return this;
         }
 
