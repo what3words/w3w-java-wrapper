@@ -2,6 +2,7 @@ package com.what3words.javawrapper.examples;
 
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.request.AutosuggestInputType;
+import com.what3words.javawrapper.request.AutosuggestOptions;
 import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.Autosuggest;
@@ -34,7 +35,33 @@ public class AutosuggestExample {
 
             }
         }
-        
+
+        /** Vanilla autosuggest, using AutosuggestOptions to apply filters */
+        AutosuggestOptions options = new AutosuggestOptions();
+        options.setFocus(new Coordinates(51.520833, -0.195543));
+        autosuggest = api.autosuggest("filled.count.soap")
+                .options(options)
+                .execute();
+        if (autosuggest.isSuccessful()) {
+            System.out.println("Autosuggest using AutosuggestOptions: " + autosuggest);
+        } else {
+            What3WordsError error = autosuggest.getError();
+
+            if (error == What3WordsError.BAD_FOCUS) { // The focus provided is not valid
+                System.out.println("BadFocus: " + error.getMessage());
+
+            } else if (error == What3WordsError.INTERNAL_SERVER_ERROR) { // Server Error
+                System.out.println("InternalServerError: " + error.getMessage());
+
+            } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
+                System.out.println("NetworkError: " + error.getMessage());
+
+            } else {
+                System.out.println(error + ": " + error.getMessage());
+
+            }
+        }
+
         /** autosuggest demonstrating clipping to polygon, circle, bounding box, and country */
         autosuggest = api.autosuggest("filled.count.soap")
                 .clipToPolygon(new Coordinates(52.321911, 1.516113), new Coordinates(52.321911, -2.021484), new Coordinates(50.345460, -2.021484), new Coordinates(52.321911, 1.516113))

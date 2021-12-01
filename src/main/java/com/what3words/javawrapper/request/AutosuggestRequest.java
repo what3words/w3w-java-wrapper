@@ -1,12 +1,11 @@
 package com.what3words.javawrapper.request;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.what3words.javawrapper.What3WordsV3;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.Autosuggest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AutosuggestRequest extends Request<Autosuggest> {
     private String input;
@@ -181,6 +180,31 @@ public class AutosuggestRequest extends Request<Autosuggest> {
 
         public Builder preferLand(boolean preferLand) {
             this.preferLand = Boolean.toString(preferLand);
+            return this;
+        }
+
+        /**
+         * Set all options at once using <code>AutosuggestOptions</code>
+         *
+         * @param options the AutoSuggestOptions
+         * @return a {@link Builder} instance suitable for invoking a <code>autosuggest</code> API request
+         */
+        public Builder options(AutosuggestOptions options) {
+            if (options.getNResults() != null) nResults(options.getNResults());
+            if (options.getFocus() != null) focus(options.getFocus());
+            if (options.getNFocusResults() != null) nFocusResults(options.getNFocusResults());
+            if (options.getClipToCountry() != null) clipToCountry(options.getClipToCountry().toArray(new String[]{}));
+            if (options.getClipToCircle() != null) {
+                if (options.getClipToCircleRadius() != null)
+                    clipToCircle(options.getClipToCircle(), options.getClipToCircleRadius());
+                else clipToCircle(options.getClipToCircle(), 1.0);
+            }
+            if (options.getClipToPolygon() != null)
+                clipToPolygon(options.getClipToPolygon().toArray(new Coordinates[]{}));
+            if (options.getClipToBoundingBox() != null) clipToBoundingBox(options.getClipToBoundingBox());
+            if (options.getLanguage() != null) language(options.getLanguage());
+            if (options.getInputType() != null) inputType(options.getInputType());
+            if (options.getPreferLand() != null) preferLand(options.getPreferLand());
             return this;
         }
 
