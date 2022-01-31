@@ -30,6 +30,16 @@ public class SuggestionWithCoordinates {
         this.coordinates = coordinates;
     }
 
+    public SuggestionWithCoordinates(Suggestion suggestion, double lat, double lng) {
+        country = suggestion.getCountry();
+        nearestPlace = suggestion.getNearestPlace();
+        words = suggestion.getWords();
+        language = suggestion.getLanguage();
+        distanceToFocusKm = suggestion.getDistanceToFocusKm();
+        rank = suggestion.getRank();
+        this.coordinates = new Coordinates(lat, lng);
+    }
+
     public SuggestionWithCoordinates(Suggestion suggestion, ConvertToCoordinates convertToCoordinates) {
         country = suggestion.getCountry();
         nearestPlace = suggestion.getNearestPlace();
