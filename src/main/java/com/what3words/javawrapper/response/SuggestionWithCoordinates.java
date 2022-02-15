@@ -30,6 +30,16 @@ public class SuggestionWithCoordinates {
         this.coordinates = coordinates;
     }
 
+    public SuggestionWithCoordinates(Suggestion suggestion, double lat, double lng) {
+        country = suggestion.getCountry();
+        nearestPlace = suggestion.getNearestPlace();
+        words = suggestion.getWords();
+        language = suggestion.getLanguage();
+        distanceToFocusKm = suggestion.getDistanceToFocusKm();
+        rank = suggestion.getRank();
+        this.coordinates = new Coordinates(lat, lng);
+    }
+
     public SuggestionWithCoordinates(Suggestion suggestion, ConvertToCoordinates convertToCoordinates) {
         country = suggestion.getCountry();
         nearestPlace = suggestion.getNearestPlace();
@@ -42,77 +52,39 @@ public class SuggestionWithCoordinates {
         square = convertToCoordinates.getSquare();
     }
 
-
     public String getCountry() {
         return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public Square getSquare() {
         return square;
     }
 
-    public void setSquare(Square square) {
-        this.square = square;
-    }
-
     public String getNearestPlace() {
         return nearestPlace;
-    }
-
-    public void setNearestPlace(String nearestPlace) {
-        this.nearestPlace = nearestPlace;
     }
 
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
     public String getWords() {
         return words;
-    }
-
-    public void setWords(String words) {
-        this.words = words;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getMap() {
         return map;
-    }
-
-    public void setMap(String map) {
-        this.map = map;
     }
 
     public Integer getDistanceToFocusKm() {
         return distanceToFocusKm;
     }
 
-    public void setDistanceToFocusKm(Integer distanceToFocusKm) {
-        this.distanceToFocusKm = distanceToFocusKm;
-    }
-
     public int getRank() {
         return rank;
     }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
 }
