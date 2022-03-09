@@ -52,6 +52,18 @@ public class SuggestionWithCoordinates {
         square = convertToCoordinates.getSquare();
     }
 
+    public SuggestionWithCoordinates(Suggestion suggestion, ConvertTo3WA convertTo3WA) {
+        country = suggestion.getCountry();
+        nearestPlace = suggestion.getNearestPlace();
+        words = suggestion.getWords();
+        language = suggestion.getLanguage();
+        distanceToFocusKm = suggestion.getDistanceToFocusKm();
+        rank = suggestion.getRank();
+        coordinates = convertTo3WA.getCoordinates();
+        map = convertTo3WA.getMap();
+        square = convertTo3WA.getSquare();
+    }
+
     public String getCountry() {
         return country;
     }
