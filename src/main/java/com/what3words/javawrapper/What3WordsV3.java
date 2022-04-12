@@ -184,6 +184,19 @@ public class What3WordsV3 {
     }
 
     /**
+     * Returns a section of the 3m x 3m what3words grid for a bounding box with GeoJson format. The bounding box is specified by lat,lng,lat,lng
+     * as south,west,north,east.
+     *
+     * @param boundingBox <code>BoundingBox</code>, for which the grid should be returned. The requested box must not exceed 4km
+     *                    from corner to corner. Latitudes must be &gt;= -90 and &lt;= 90, but longitudes are allowed to wrap around 180. To specify a
+     *                    bounding-box that crosses the anti-meridian, use longitude greater than 180.
+     * @return a {@link GridSectionRequest.Builder} instance suitable for invoking a <code>grid-section</code> API request
+     */
+    public GridSectionGeoJsonRequest.Builder gridSectionGeoJson(BoundingBox boundingBox) {
+        return new GridSectionGeoJsonRequest.Builder(this, boundingBox);
+    }
+
+    /**
      * Retrieves a list all available 3 word address languages, including the ISO 639-1 2 letter code, english name and native name.
      *
      * @return a {@link AvailableLanguagesRequest.Builder} instance suitable for invoking a <code>available-languages</code> API request

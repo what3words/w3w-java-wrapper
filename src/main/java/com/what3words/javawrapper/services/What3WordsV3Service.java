@@ -62,8 +62,11 @@ public interface What3WordsV3Service {
     );
     
     @GET("grid-section")
-    Call<GridSection> gridSection(@Query("bounding-box") String bbox);
-    
+    Call<GridSection> gridSection(@Query("bounding-box") String bbox, @Query("format") String format);
+
+    @GET("grid-section")
+    Call<GridSectionGeoJson> gridSectionGeoJson(@Query("bounding-box") String bbox, @Query("format") String format);
+
     @GET("available-languages")
     Call<AvailableLanguages> availableLanguages();
 }
