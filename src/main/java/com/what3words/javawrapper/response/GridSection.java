@@ -15,3 +15,4 @@ public class GridSection extends Response<GridSection> {
         return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }
 }
+
