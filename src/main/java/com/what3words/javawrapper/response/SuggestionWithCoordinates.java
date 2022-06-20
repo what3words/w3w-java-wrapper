@@ -40,6 +40,17 @@ public class SuggestionWithCoordinates {
         this.coordinates = new Coordinates(lat, lng);
     }
 
+    public SuggestionWithCoordinates(Suggestion suggestion, double lat, double lng, double neLat, double neLng, double swLat, double swLng) {
+        country = suggestion.getCountry();
+        nearestPlace = suggestion.getNearestPlace();
+        words = suggestion.getWords();
+        language = suggestion.getLanguage();
+        distanceToFocusKm = suggestion.getDistanceToFocusKm();
+        rank = suggestion.getRank();
+        this.coordinates = new Coordinates(lat, lng);
+        this.square = new Square(neLat, neLng, swLat, swLng);
+    }
+
     public SuggestionWithCoordinates(Suggestion suggestion, ConvertToCoordinates convertToCoordinates) {
         country = suggestion.getCountry();
         nearestPlace = suggestion.getNearestPlace();
