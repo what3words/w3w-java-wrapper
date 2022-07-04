@@ -28,6 +28,12 @@ public class What3WordsV3 {
     public static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     public static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
 
+    /**
+     * Check if {@link String} is a possible what3words address. A reminder that this just checks the format of the text, hence why is called possible3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest}.
+     *
+     * @param text the {@link String} to match using our regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, and false if isn't.
+     */
     public static Boolean isPossible3wa(String text) {
         String regex =
                 "^/*(?:(?:\\p{L}\\p{M}*)+[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+|(?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3})$";
@@ -35,6 +41,12 @@ public class What3WordsV3 {
         return pattern.matcher(text).find();
     }
 
+    /**
+     * Check if {@link String} is a possible what3words address, this regex allows different separators (i.e: not using standard full stop/dot). A reminder that this just checks the format of the text, hence why is called didYouMean3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest} using full stop as a separator.
+     *
+     * @param text the {@link String} to match using our did you mean regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, and false if isn't.
+     */
     public static Boolean didYouMean3wa(String text) {
         String dymRegex =
                 "^/*(?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።। ,\\\\^_/+'&\\:;|　-]{1,2}(?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።। ,\\\\^_/+'&\\:;|　-]{1,2}(?:\\p{L}\\p{M}*){1,}$";
@@ -42,6 +54,13 @@ public class What3WordsV3 {
         return pattern.matcher(text).find();
     }
 
+    /**
+     * Get any possible what3words addresses from {@link String} text. Will return an empty list if no possible addresses are found.
+     * Reminder that this just checks the format of the text, hence why is called findPossible3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest} to verify the results of this search.
+     *
+     * @param text the {@link String} to find possible what3words addresses using our regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, false if isn't.
+     */
     public static List<String> findPossible3wa(String text) {
         List<String> allMatches = new ArrayList<>();
         String searchRegex =
