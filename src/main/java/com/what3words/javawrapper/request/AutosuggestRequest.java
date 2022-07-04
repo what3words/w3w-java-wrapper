@@ -184,7 +184,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         }
 
         /**
-         * Set all options at once using <code>AutosuggestOptions</code>
+         * Set all options at once using {@link AutosuggestOptions}
          *
          * @param options the AutoSuggestOptions
          * @return a {@link Builder} instance suitable for invoking a <code>autosuggest</code> API request
