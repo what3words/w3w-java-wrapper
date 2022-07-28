@@ -1,6 +1,10 @@
 package com.what3words.javawrapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.what3words.javawrapper.request.*;
 import com.what3words.javawrapper.response.AutosuggestSelection;
@@ -13,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Instances of the What3WordsV3 class provide access to Version 3 of the what3words API.
  */
+
 public class What3WordsV3 {
     private static String DEFAULT_ENDPOINT = "https://api.what3words.com/v3/";
 
@@ -22,6 +27,50 @@ public class What3WordsV3 {
     public static final String W3W_WRAPPER = "X-W3W-Wrapper";
     public static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     public static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
+
+    /**
+     * Check if {@link String} is a possible what3words address. A reminder that this just checks the format of the text, hence why is called possible3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest}.
+     *
+     * @param text the {@link String} to match using our regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, and false if isn't.
+     */
+    public static Boolean isPossible3wa(String text) {
+        String regex =
+                "^/*(?:(?:\\p{L}\\p{M}*)+[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+|(?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*)+([\u0020\u00A0](?:\\p{L}\\p{M}*)+){1,3})$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(text).find();
+    }
+
+    /**
+     * Check if {@link String} is a possible what3words address, this regex allows different separators (i.e: not using standard full stop/dot). A reminder that this just checks the format of the text, hence why is called didYouMean3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest} using full stop as a separator.
+     *
+     * @param text the {@link String} to match using our did you mean regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, and false if isn't.
+     */
+    public static Boolean didYouMean3wa(String text) {
+        String dymRegex =
+                "^/*(?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።। ,\\\\^_/+'&\\:;|　-]{1,2}(?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።। ,\\\\^_/+'&\\:;|　-]{1,2}(?:\\p{L}\\p{M}*){1,}$";
+        Pattern pattern = Pattern.compile(dymRegex);
+        return pattern.matcher(text).find();
+    }
+
+    /**
+     * Get any possible what3words addresses from {@link String} text. Will return an empty list if no possible addresses are found.
+     * Reminder that this just checks the format of the text, hence why is called findPossible3wa, to verify if it's a real what3words address please use {@link ConvertTo3WARequest} or {@link AutosuggestRequest} to verify the results of this search.
+     *
+     * @param text the {@link String} to find possible what3words addresses using our regex.
+     * @return a {@link Boolean} which will be true if it's a match against our regex, false if isn't.
+     */
+    public static List<String> findPossible3wa(String text) {
+        List<String> allMatches = new ArrayList<>();
+        String searchRegex =
+                "(?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*){1,}[.｡。･・︒។։။۔።।](?:\\p{L}\\p{M}*){1,}";
+        Matcher pattern = Pattern.compile(searchRegex).matcher(text);
+        while (pattern.find()) {
+            allMatches.add(pattern.group());
+        }
+        return allMatches;
+    }
 
     private Retrofit retrofit;
     private OkHttpClient okHttpClient;
@@ -160,10 +209,10 @@ public class What3WordsV3 {
      * It should be called once in conjunction with autosuggest or autosuggest-with-coordinates.
      * when an end user picks a what3words address from the suggestions presented to them.
      *
-     * @param rawInput The full or partial 3 word address used on the autosuggest or autosuggest-with-coordinates call.
+     * @param rawInput  The full or partial 3 word address used on the autosuggest or autosuggest-with-coordinates call.
      * @param sourceApi The source of the selected autosuggest, can be 'SourceApi.TEXT' or 'SourceApi.VOICE'.
      * @param selection The 3 word address of the selected suggestion.
-     * @param rank The rank of the selected suggestion.
+     * @param rank      The rank of the selected suggestion.
      * @return a {@link AutosuggestSelectionRequest.Builder} instance suitable for invoking a <code>autosuggest-selection</code> API request
      */
     public AutosuggestSelectionRequest.Builder autosuggestionSelection(String rawInput, String selection, int rank, SourceApi sourceApi) {
