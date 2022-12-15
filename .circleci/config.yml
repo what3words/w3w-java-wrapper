@@ -4,6 +4,7 @@ orbs:
 
 jobs:
   run-unit-tests:
+    machine: true
     steps:
       - checkout
       - run:
@@ -13,6 +14,7 @@ jobs:
       - store_test_results:
           path: build/test-results
   deploy-to-sonatype:
+    machine: true
     steps:
       - checkout
       - restore_cache:
