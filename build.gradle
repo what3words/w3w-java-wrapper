@@ -1,7 +1,10 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
+
+apply from: 'maven-push.gradle'
 
 repositories {
     mavenCentral()
