@@ -9,8 +9,7 @@ jobs:
       - checkout
       - run:
           name: Unit Tests
-          command: W3W_API_KEY = $W3W_API_KEY
-            ./gradlew test
+          command: ./gradlew test
       - store_test_results:
           path: build/test-results
   deploy-to-sonatype:
