@@ -14,11 +14,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Instances of the What3WordsV3 class provide access to Version 3 of the what3words API.
- */
-
-public class What3WordsV3 {
+public class What3WordsV3 implements What3WordsWrapper {
     private static String DEFAULT_ENDPOINT = "https://api.what3words.com/v3/";
 
     public static final String HEADER_CONTENT_TYPE = "Content-Type";
@@ -257,8 +253,4 @@ public class What3WordsV3 {
     public What3WordsV3Service what3words() {
         return getRetrofitInstance().create(What3WordsV3Service.class);
     }
-
-//    String apiKey() {
-//        return apiKey;
-//    }
 }
