@@ -15,9 +15,9 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 
 public class Request<T extends Response<T>> {
-    protected What3WordsV3 api;
+    protected What3WordsWrapper api;
     
-    protected Request(What3WordsV3 api) {
+    protected Request(What3WordsWrapper api) {
         this.api = api;
     }
 
