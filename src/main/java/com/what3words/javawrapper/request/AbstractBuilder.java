@@ -12,7 +12,6 @@ public abstract class AbstractBuilder<T> {
     protected What3WordsWrapper api;
     
     protected AbstractBuilder(What3WordsWrapper api) {
-rdsV3 api) {
         this.api = api;
     }
     
