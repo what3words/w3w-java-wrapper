@@ -1,7 +1,7 @@
 package com.what3words.javawrapper.request;
 
 import com.google.gson.stream.MalformedJsonException;
-import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsWrapper;
 import com.what3words.javawrapper.response.APIError;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.AutosuggestSelection;

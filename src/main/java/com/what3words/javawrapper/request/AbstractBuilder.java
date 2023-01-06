@@ -1,6 +1,6 @@
 package com.what3words.javawrapper.request;
 
-import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsWrapper;
 import com.what3words.javawrapper.request.ConvertTo3WARequest.Builder;
 import com.what3words.javawrapper.response.APIResponse;
 

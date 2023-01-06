@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsWrapper;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.AutosuggestWithCoordinates;
 
@@ -53,7 +54,7 @@ public class AutosuggestWithCoordinatesRequest extends Request<AutosuggestWithCo
         private String language;
         private String preferLand;
 
-        public Builder(What3WordsV3 api, String input) {
+        public Builder(What3WordsWrapper api, String input) {
             super(api);
             this.input = input;
         }
