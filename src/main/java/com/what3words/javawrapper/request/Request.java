@@ -5,6 +5,7 @@ import java.lang.annotation.Annotation;
 
 import com.google.gson.stream.MalformedJsonException;
 import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsWrapper;
 import com.what3words.javawrapper.response.APIError;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.APIResponse.What3WordsError;
@@ -16,9 +17,9 @@ import retrofit2.Call;
 import retrofit2.Converter;
 
 public class Request<T extends Response<T>> {
-    protected What3WordsV3 api;
+    protected What3WordsWrapper api;
     
-    protected Request(What3WordsV3 api) {
+    protected Request(What3WordsWrapper api) {
         this.api = api;
     }
 
