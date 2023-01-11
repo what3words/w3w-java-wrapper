@@ -7,14 +7,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.what3words.javawrapper.request.*;
-import com.what3words.javawrapper.response.AutosuggestSelection;
 import com.what3words.javawrapper.services.What3WordsV3Service;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class What3WordsV3 implements What3WordsWrapper {
+public class What3WordsV3 implements What3WordsJavaWrapper {
     private static String DEFAULT_ENDPOINT = "https://api.what3words.com/v3/";
 
     public static final String HEADER_CONTENT_TYPE = "Content-Type";

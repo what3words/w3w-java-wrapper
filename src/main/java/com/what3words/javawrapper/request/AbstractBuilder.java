@@ -1,7 +1,6 @@
 package com.what3words.javawrapper.request;
 
-import com.what3words.javawrapper.What3WordsV3;
-import com.what3words.javawrapper.What3WordsWrapper;
+import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.request.ConvertTo3WARequest.Builder;
 import com.what3words.javawrapper.response.APIResponse;
 
@@ -10,9 +9,9 @@ import com.what3words.javawrapper.response.APIResponse;
  * before calling <code>execute()</code> to invoke the API request
  */
 public abstract class AbstractBuilder<T> {
-    protected What3WordsWrapper api;
+    protected What3WordsJavaWrapper api;
     
-    protected AbstractBuilder(What3WordsWrapper api) {
+    protected AbstractBuilder(What3WordsJavaWrapper api) {
         this.api = api;
     }
     
