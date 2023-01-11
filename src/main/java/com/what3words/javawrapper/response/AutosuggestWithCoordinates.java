@@ -8,6 +8,10 @@ public class AutosuggestWithCoordinates extends Response<AutosuggestWithCoordina
 	
 	private List<SuggestionWithCoordinates> suggestions = null;
 
+	public AutosuggestWithCoordinates() {
+
+	}
+
 	public AutosuggestWithCoordinates(List<SuggestionWithCoordinates> suggestions) {
 		this.suggestions = suggestions;
 	}

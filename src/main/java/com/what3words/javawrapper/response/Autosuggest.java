@@ -7,6 +7,10 @@ import com.google.gson.GsonBuilder;
 public class Autosuggest extends Response<Autosuggest> {
     private List<Suggestion> suggestions = null;
 
+    public Autosuggest() {
+
+    }
+
     public Autosuggest(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
     }
@@ -19,7 +23,7 @@ public class Autosuggest extends Response<Autosuggest> {
     public void setSuggestions(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
     }
-    
+
     public String toString() {
         return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }

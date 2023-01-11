@@ -11,6 +11,9 @@ public class ConvertToCoordinates extends Response<ConvertToCoordinates> {
     private String language;
     private String map;
 
+    public ConvertToCoordinates() {
+    }
+
     public ConvertToCoordinates(String country, Square square, String nearestPlace, Coordinates coordinates, String words, String language, String map) {
         this.country = country;
         this.square = square;
