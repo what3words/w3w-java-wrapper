@@ -30,7 +30,11 @@ public class ConvertTo3WARequest extends Request<ConvertTo3WA> {
             this.language = language;
             return this;
         }
-        
+
+        public String getLanguage() {
+            return language;
+        }
+
         public ConvertTo3WA execute() {
             return new ConvertTo3WARequest(this).execute();
         }

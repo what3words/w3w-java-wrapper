@@ -5,6 +5,7 @@ import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.Autosuggest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AutosuggestRequest extends Request<Autosuggest> {
@@ -52,10 +53,12 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         private String inputType;
         private String language;
         private String preferLand;
+        private AutosuggestOptions options;
 
         public Builder(What3WordsJavaWrapper api, String input) {
             super(api);
             this.input = input;
+            this.options = new AutosuggestOptions();
         }
 
         /**
@@ -67,6 +70,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder nResults(int n) {
             this.nResults = String.valueOf(n);
+            this.options.setNResults(n);
             return this;
         }
 
@@ -79,6 +83,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder focus(Coordinates coordinates) {
             this.focus = String.valueOf(coordinates.lat) + "," + String.valueOf(coordinates.lng);
+            this.options.setFocus(coordinates);
             return this;
         }
 
@@ -93,6 +98,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder nFocusResults(int n) {
             this.nFocusResults = String.valueOf(n);
+            this.options.setNFocusResults(n);
             return this;
         }
 
@@ -106,6 +112,8 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder clipToCircle(Coordinates centre, double radius) {
             this.clipToCircle = String.valueOf(centre.lat) + "," + String.valueOf(centre.lng) + "," + String.valueOf(radius);
+            this.options.setClipToCircle(centre);
+            this.options.setClipToCircleRadius(radius);
             return this;
         }
 
@@ -124,6 +132,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
                 coordinatesList.add(String.valueOf(coordinates.lng));
             }
             this.clipToPolygon = join(",", coordinatesList.toArray(new String[0]));
+            this.options.setClipToPolygon(Arrays.asList(polygon));
             return this;
         }
 
@@ -136,6 +145,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         public Builder clipToBoundingBox(BoundingBox boundingBox) {
             this.clipToBoundingBox = String.valueOf(boundingBox.sw.lat) + "," + String.valueOf(boundingBox.sw.lng) + "," +
                     String.valueOf(boundingBox.ne.lat) + "," + String.valueOf(boundingBox.ne.lng);
+            this.options.setClipToBoundingBox(boundingBox);
             return this;
         }
 
@@ -150,6 +160,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder clipToCountry(String... countryCodes) {
             this.clipToCountry = join(",", countryCodes);
+            this.options.setClipToCountry(Arrays.asList(countryCodes));
             return this;
         }
 
@@ -163,6 +174,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder language(String language) {
             this.language = language;
+            this.options.setLanguage(language);
             return this;
         }
 
@@ -175,11 +187,13 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Builder inputType(AutosuggestInputType type) {
             this.inputType = type.toString();
+            this.options.setInputType(type);
             return this;
         }
 
         public Builder preferLand(boolean preferLand) {
             this.preferLand = Boolean.toString(preferLand);
+            this.options.setPreferLand(preferLand);
             return this;
         }
 
@@ -215,6 +229,10 @@ public class AutosuggestRequest extends Request<Autosuggest> {
          */
         public Autosuggest execute() {
             return new AutosuggestRequest(this).execute();
+        }
+
+        public AutosuggestOptions getOptions() {
+            return this.options;
         }
 
         private static String join(String separator, String... values) {
