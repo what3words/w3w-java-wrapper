@@ -1,6 +1,6 @@
 package com.what3words.javawrapper.request;
 
-import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.response.ConvertToCoordinates;
 
 public class ConvertToCoordinatesRequest extends Request<ConvertToCoordinates> {
@@ -18,7 +18,7 @@ public class ConvertToCoordinatesRequest extends Request<ConvertToCoordinates> {
     public static class Builder extends AbstractBuilder<ConvertToCoordinates> {
         private String words;
         
-        public Builder(What3WordsV3 api, String words) {
+        public Builder(What3WordsJavaWrapper api, String words) {
             super(api);
             this.words = words;
         }

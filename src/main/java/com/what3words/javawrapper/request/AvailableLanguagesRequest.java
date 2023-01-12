@@ -1,6 +1,6 @@
 package com.what3words.javawrapper.request;
 
-import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.AvailableLanguages;
 
@@ -14,7 +14,7 @@ public class AvailableLanguagesRequest extends Request<AvailableLanguages> {
     }
 
     public static class Builder extends AbstractBuilder<AvailableLanguages> {
-        public Builder(What3WordsV3 api) {
+        public Builder(What3WordsJavaWrapper api) {
             super(api);
         }
 
