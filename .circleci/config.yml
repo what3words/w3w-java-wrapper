@@ -54,7 +54,7 @@ workflows:
             - maven-sign
           name: Build, run tests, sonar and push to maven staging
           requires: [Run unit tests]
-#          filters:
-#            branches:
-#              only:
-#                - dev
+          filters:
+            branches:
+              only:
+                - dev
