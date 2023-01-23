@@ -47,6 +47,7 @@ workflows:
   build-sonar-publish:
     jobs:
       - run-unit-tests:
+          context: SonarCloud
           name: Run unit tests
       - deploy-to-sonatype:
           context:
