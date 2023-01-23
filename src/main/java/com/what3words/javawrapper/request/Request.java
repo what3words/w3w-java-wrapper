@@ -1,8 +1,5 @@
 package com.what3words.javawrapper.request;
 
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-
 import com.google.gson.stream.MalformedJsonException;
 import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.response.APIError;
@@ -10,10 +7,12 @@ import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ErrorResponse;
 import com.what3words.javawrapper.response.Response;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Converter;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
 
 public class Request<T extends Response<T>> {
     protected What3WordsJavaWrapper api;
