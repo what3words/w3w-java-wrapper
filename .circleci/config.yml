@@ -53,8 +53,7 @@ workflows:
           context:
             - maven-sign
           name: Build, run tests, sonar and push to maven staging
-          requires:
-            - run-unit-tests
+          requires: [Run unit tests]
 #          filters:
 #            branches:
 #              only:
