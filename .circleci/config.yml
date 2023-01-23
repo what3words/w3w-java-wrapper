@@ -50,6 +50,8 @@ workflows:
           context: SonarCloud
           name: Run unit tests
       - deploy-to-sonatype:
+          requires:
+            - run-unit-tests
           context:
             - maven-sign
           name: Build, run tests, sonar and push to maven staging
