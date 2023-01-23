@@ -9,7 +9,10 @@ jobs:
       - checkout
       - run:
           name: Unit Tests
-          command: ./gradlew test
+          command: ./gradlew test jacocoTestReport
+      - run:
+          name: Upload Coverage Report to SonarCloud
+          command: ./gradlew sonarqube
       - store_test_results:
           path: build/test-results
   deploy-to-sonatype:
@@ -49,7 +52,7 @@ workflows:
           context:
             - maven-sign
           name: Build, run tests, sonar and push to maven staging
-          filters:
-            branches:
-              only:
-                - dev
+#          filters:
+#            branches:
+#              only:
+#                - dev
