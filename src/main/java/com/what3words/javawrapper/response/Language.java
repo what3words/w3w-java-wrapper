@@ -5,6 +5,12 @@ public class Language {
     private String name;
     private String nativeName;
 
+    public Language(String code, String name, String nativeName) {
+        this.code = code;
+        this.name = name;
+        this.nativeName = nativeName;
+    }
+
     public String getCode() {
         return code;
     }

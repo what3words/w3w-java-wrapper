@@ -40,3 +40,4 @@ public class ConvertToCoordinatesTest {
         assertEquals("Bayswater, London", coords.getNearestPlace());
     }
 }
+

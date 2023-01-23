@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
  * Instances of the What3WordsV3 class provide access to Version 3 of the what3words API.
  */
 
-public interface What3WordsWrapper {
+public interface What3WordsJavaWrapper {
     ConvertTo3WARequest.Builder convertTo3wa(Coordinates coordinates);
     ConvertToCoordinatesRequest.Builder convertToCoordinates(String words);
     AutosuggestRequest.Builder autosuggest(String input);

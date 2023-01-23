@@ -1,7 +1,7 @@
 package com.what3words.javawrapper.request;
 
 import com.google.gson.stream.MalformedJsonException;
-import com.what3words.javawrapper.What3WordsWrapper;
+import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.response.APIError;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.AutosuggestSelection;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AutosuggestSelectionRequest {
-    protected What3WordsWrapper api;
+    protected What3WordsJavaWrapper api;
     private String rawInput;
     private String selection;
     private String rank;
@@ -131,7 +131,7 @@ public class AutosuggestSelectionRequest {
         private String language;
         private String preferLand;
 
-        public Builder(What3WordsWrapper api, String rawInput, String selection, int rank, SourceApi sourceApi) {
+        public Builder(What3WordsJavaWrapper api, String rawInput, String selection, int rank, SourceApi sourceApi) {
             super(api);
             this.rawInput = rawInput;
             this.selection = selection;
