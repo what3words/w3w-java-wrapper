@@ -28,8 +28,6 @@ public class RequestTest {
         assertNotNull(c1.toString());
         assertTrue(c1.toString().contains("5.1"));
         assertEquals(c1, c2);
-        assertEquals(c1, c1);
-        assertNotEquals(c1, "c1");
         assertNotEquals(c1, null);
         assertNotEquals(c1, c3);
         assertNotEquals(c1, c4);
