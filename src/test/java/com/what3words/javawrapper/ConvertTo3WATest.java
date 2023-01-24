@@ -1,7 +1,9 @@
 package com.what3words.javawrapper;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import com.what3words.javawrapper.request.ConvertTo3WARequest;
 import org.junit.Test;
 
 import com.what3words.javawrapper.request.Coordinates;
@@ -39,5 +41,28 @@ public class ConvertTo3WATest {
         assertEquals("en", twa.getLanguage());
         assertEquals("https://w3w.co/filled.count.soap", twa.getMap());
         assertEquals("Bayswater, London", twa.getNearestPlace());
+    }
+
+    @Test
+    public void validCoordsWithLanguageTest() {
+        ConvertTo3WARequest.Builder twaBuilder = api.convertTo3wa(new Coordinates(51.520847, -0.19552100)).language("pt");
+        assertEquals("pt", twaBuilder.getLanguage());
+
+        ConvertTo3WA twa = twaBuilder.execute();
+
+        assertEquals("refrigerando.valem.touro", twa.getWords());
+        assertEquals("GB", twa.getCountry());
+
+        assertEquals(-0.195543, twa.getSquare().getSouthwest().getLng(), 0);
+        assertEquals(51.520833, twa.getSquare().getSouthwest().getLat(),0);
+        assertEquals(-0.195499, twa.getSquare().getNortheast().getLng(),0);
+        assertEquals(51.52086, twa.getSquare().getNortheast().getLat(), 0);
+
+        assertEquals(-0.195521,  twa.getCoordinates().getLng(),0);
+        assertEquals(51.520847, twa.getCoordinates().getLat(), 0);
+
+        assertEquals("pt", twa.getLanguage());
+        assertEquals("https://w3w.co/refrigerando.valem.touro", twa.getMap());
+        assertEquals("Londres, London", twa.getNearestPlace());
     }
 }
