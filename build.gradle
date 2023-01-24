@@ -2,9 +2,12 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id "org.sonarqube" version "3.4.0.2513"
 }
 
 apply from: 'maven-push.gradle'
+apply from: 'jacoco.gradle'
+apply from: 'sonarqube.gradle'
 
 repositories {
     mavenCentral()
