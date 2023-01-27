@@ -47,11 +47,14 @@ workflows:
   build-sonar-publish:
     jobs:
       - run-unit-tests:
-          context: SonarCloud
+          context:
+            - SonarCloud
+            - mobile
           name: Run unit tests
       - deploy-to-sonatype:
           context:
             - maven-sign
+            - mobile
           name: Build, run tests, sonar and push to maven staging
           requires: [Run unit tests]
           filters:

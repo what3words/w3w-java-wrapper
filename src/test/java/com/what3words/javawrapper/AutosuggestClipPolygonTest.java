@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AutosuggestClipPolygonTest {
-    What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
+    What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
     
     @Test
     public void testPolygonClip() {
