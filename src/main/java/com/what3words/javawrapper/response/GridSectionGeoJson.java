@@ -7,6 +7,14 @@ public class GridSectionGeoJson extends Response<GridSectionGeoJson> {
     private JsonArray features = null;
     private String type = null;
 
+    public GridSectionGeoJson() {
+    }
+
+    public GridSectionGeoJson(JsonArray features, String type) {
+        this.features = features;
+        this.type = type;
+    }
+
     public JsonArray getFeatures() {
         return features;
     }

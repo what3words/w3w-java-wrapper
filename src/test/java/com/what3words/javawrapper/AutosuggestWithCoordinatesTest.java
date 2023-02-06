@@ -13,7 +13,7 @@ import com.what3words.javawrapper.response.AutosuggestWithCoordinates;
 import com.what3words.javawrapper.response.SuggestionWithCoordinates;
 
 public class AutosuggestWithCoordinatesTest {
-    What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
+    What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
 
 	@Test
 	public void testAutosuggestWithCoordinates() {

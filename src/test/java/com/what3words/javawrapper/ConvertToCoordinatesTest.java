@@ -9,7 +9,7 @@ import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ConvertToCoordinates;
 
 public class ConvertToCoordinatesTest {
-    What3WordsV3 api = new What3WordsV3(System.getenv("W3W_API_KEY"));
+    What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
     
     @Test
     public void invalid3waTest() {
@@ -40,3 +40,4 @@ public class ConvertToCoordinatesTest {
         assertEquals("Bayswater, London", coords.getNearestPlace());
     }
 }
+

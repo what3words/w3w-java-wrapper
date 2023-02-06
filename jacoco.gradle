@@ -1,0 +1,43 @@
+apply plugin: 'jacoco'
+
+ext {
+    coverageExclusions = [
+            '**/*Activity*.*',
+            '**/*Fragment*.*',
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+    ]
+}
+
+jacoco {
+    toolVersion = '0.8.7'
+    reportsDir = file("$buildDir/reports")
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    // https://github.com/gradle/gradle/issues/5184#issuecomment-457865951
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+tasks.withType(Test) {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn "test"
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports for Debug build"
+
+    reports {
+        xml.enabled true
+        csv.required = false
+    }
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/examples/**')
+        }))
+    }
+}

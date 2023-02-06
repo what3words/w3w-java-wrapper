@@ -1,0 +1,63 @@
+version: 2.1
+orbs:
+  gradle: circleci/gradle@3.0.0
+
+jobs:
+  run-unit-tests:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Unit Tests
+          command: ./gradlew test jacocoTestReport
+      - run:
+          name: Upload Coverage Report to SonarCloud
+          command: ./gradlew sonarqube
+      - store_test_results:
+          path: build/test-results
+  deploy-to-sonatype:
+    machine: true
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}
+      - run:
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Wrapper
+          command: ./gradlew wrapper
+      - run:
+          name: Download Dependencies
+          command: ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}
+      - run:
+          name: Inject Maven signing key
+          command: |
+            echo $GPG_SIGNING_KEY \
+            | awk 'NR == 1 { print "SIGNING_KEY=" } 1' ORS='\\n' \
+            >> gradle.properties
+      - run:
+          name: Publish to Maven
+          command: ./gradlew assemble publish
+workflows:
+  build-sonar-publish:
+    jobs:
+      - run-unit-tests:
+          context:
+            - SonarCloud
+            - mobile
+          name: Run unit tests
+      - deploy-to-sonatype:
+          context:
+            - maven-sign
+            - mobile
+          name: Build, run tests, sonar and push to maven staging
+          requires: [Run unit tests]
+          filters:
+            branches:
+              only:
+                - dev

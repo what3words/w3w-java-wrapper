@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+    id "org.sonarqube" version "3.4.0.2513"
+}
+
+apply from: 'maven-push.gradle'
+apply from: 'jacoco.gradle'
+apply from: 'sonarqube.gradle'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    api libs.bundles.retrofit
+    testImplementation testLibs.junit
+}
+
+version = findProperty('LIBRARY_VERSION') ? findProperty('LIBRARY_VERSION') : '3.1.15'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}

@@ -11,6 +11,19 @@ public class ConvertTo3WA extends Response<ConvertTo3WA> {
     private String language;
     private String map;
 
+    public ConvertTo3WA() {
+    }
+
+    public ConvertTo3WA(String country, Square square, String nearestPlace, Coordinates coordinates, String words, String language, String map) {
+        this.country = country;
+        this.square = square;
+        this.nearestPlace = nearestPlace;
+        this.coordinates = coordinates;
+        this.words = words;
+        this.language = language;
+        this.map = map;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -38,7 +51,7 @@ public class ConvertTo3WA extends Response<ConvertTo3WA> {
     public String getMap() {
         return map;
     }
-    
+
     public String toString() {
         return new GsonBuilder().setPrettyPrinting().create().toJson(this);
     }

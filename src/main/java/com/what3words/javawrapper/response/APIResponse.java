@@ -73,7 +73,9 @@ public class APIResponse<T> {
         INVALID_API_VERSION("InvalidApiVersion"),
         INVALID_REFERRER("InvalidReferrer"),
         INVALID_IP_ADDRESS("InvalidIpAddress"),
-        INVALID_APP_CREDENTIALS("InvalidAppCredentials");
+        INVALID_APP_CREDENTIALS("InvalidAppCredentials"),
+        
+        SDK_ERROR("SdkError");
 
         private final String key;
         private String message;

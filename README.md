@@ -1,5 +1,7 @@
 # <img src="https://what3words.com/assets/images/w3w_square_red.png" width="64" height="64" alt="what3words">&nbsp;w3w-java-wrapper
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.what3words/w3w-java-wrapper.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.what3words%22%20AND%20a:%22w3w-android-wrapper%22)
+
 A Java library to use the [what3words v3 API](https://docs.what3words.com/api/v3/).
 
 API methods are grouped into a single service object which can be centrally managed by a What3WordsV3 instance. It will act as a factory for all of the API endpoints and will automatically initialize them with your API key.
@@ -16,14 +18,14 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 <dependency>
   <groupId>com.what3words</groupId>
   <artifactId>w3w-java-wrapper</artifactId>
-  <version>3.1.15</version>
+  <version>3.1.16</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation 'com.what3words:w3w-java-wrapper:3.1.14'
+implementation 'com.what3words:w3w-java-wrapper:3.1.16'
 ```
 
 ## Documentation

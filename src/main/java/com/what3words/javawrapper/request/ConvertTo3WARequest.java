@@ -1,6 +1,6 @@
 package com.what3words.javawrapper.request;
 
-import com.what3words.javawrapper.What3WordsV3;
+import com.what3words.javawrapper.What3WordsJavaWrapper;
 import com.what3words.javawrapper.response.ConvertTo3WA;
 
 public class ConvertTo3WARequest extends Request<ConvertTo3WA> {
@@ -21,7 +21,7 @@ public class ConvertTo3WARequest extends Request<ConvertTo3WA> {
         private String coordinates;
         private String language;
         
-        public Builder(What3WordsV3 api, Coordinates coordinates) {
+        public Builder(What3WordsJavaWrapper api, Coordinates coordinates) {
             super(api);
             this.coordinates = String.valueOf(coordinates.lat) + "," + String.valueOf(coordinates.lng);
         }
@@ -30,7 +30,11 @@ public class ConvertTo3WARequest extends Request<ConvertTo3WA> {
             this.language = language;
             return this;
         }
-        
+
+        public String getLanguage() {
+            return language;
+        }
+
         public ConvertTo3WA execute() {
             return new ConvertTo3WARequest(this).execute();
         }
