@@ -1,6 +1,8 @@
 package com.what3words.javawrapper.response;
 
-public class Suggestion {
+import java.io.Serializable;
+
+public class Suggestion implements Serializable {
     private String country;
     private String nearestPlace;
     private String words;
