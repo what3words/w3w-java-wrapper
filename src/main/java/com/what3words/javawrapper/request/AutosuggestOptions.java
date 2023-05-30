@@ -1,8 +1,9 @@
 package com.what3words.javawrapper.request;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AutosuggestOptions {
+public class AutosuggestOptions implements Serializable {
     private Coordinates focus;
     private SourceApi source;
     private String language;
