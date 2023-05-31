@@ -1,8 +1,11 @@
 package com.what3words.javawrapper.request;
+
+import java.io.Serializable;
+
 /**
  * This class defines a <code>BoundingBox</code> which which represents a range of latitudes and longitudes.
  */
-public final class BoundingBox {
+public final class BoundingBox implements Serializable {
     public final Coordinates sw;
     public final Coordinates ne;
 
