@@ -39,5 +39,26 @@ public class ConvertToCoordinatesTest {
         assertEquals("https://w3w.co/filled.count.soap", coords.getMap());
         assertEquals("Bayswater, London", coords.getNearestPlace());
     }
+
+    @Test
+    public void valid3waWithLocaleTest() {
+        ConvertToCoordinates coords = api.convertToCoordinates("seruuhen.zemseg.dagaldah").execute();
+
+        assertEquals("seruuhen.zemseg.dagaldah", coords.getWords());
+        assertEquals("GB", coords.getCountry());
+
+        assertEquals(-0.195543, coords.getSquare().getSouthwest().getLng(),0);
+        assertEquals(51.520833, coords.getSquare().getSouthwest().getLat(), 0);
+        assertEquals(-0.195499, coords.getSquare().getNortheast().getLng(), 0);
+        assertEquals(51.52086, coords.getSquare().getNortheast().getLat(), 0);
+
+        assertEquals(-0.195521, coords.getCoordinates().getLng(),0);
+        assertEquals(51.520847, coords.getCoordinates().getLat(), 0);
+
+        assertEquals("mn", coords.getLanguage());
+        assertEquals("mn_la", coords.getLocale());
+        assertEquals("https://w3w.co/seruuhen.zemseg.dagaldah", coords.getMap());
+        assertEquals("Лондон, London", coords.getNearestPlace());
+    }
 }
 

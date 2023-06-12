@@ -1,18 +1,16 @@
 package com.what3words.javawrapper;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
 
 import com.what3words.javawrapper.request.AutosuggestOptions;
+import com.what3words.javawrapper.request.SourceApi;
+import com.what3words.javawrapper.response.*;
 import org.junit.Test;
 
 import com.what3words.javawrapper.request.Coordinates;
-import com.what3words.javawrapper.response.APIResponse;
-import com.what3words.javawrapper.response.Autosuggest;
-import com.what3words.javawrapper.response.Suggestion;
 import com.what3words.javawrapper.response.APIResponse.What3WordsError;
+
+import static org.junit.Assert.*;
 
 public class AutosuggestFocusTest {
     What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
@@ -33,6 +31,52 @@ public class AutosuggestFocusTest {
         }
 
         assertTrue("Failed to find index.home.raft", found);
+    }
+
+    @Test
+    public void testValidLocale() {
+        AutosuggestOptions options = new AutosuggestOptions();
+        options.setFocus(new Coordinates(51, 1));
+        options.setLocale("mn_la");
+        Autosuggest autosuggest = api.autosuggest("a.a.a").nResults(3)
+                .options(options).execute();
+
+        assertTrue(autosuggest.isSuccessful());
+
+        Suggestion suggestion = autosuggest.getSuggestions().get(0);
+
+        assertEquals("mn_la", suggestion.getLocale());
+    }
+
+    @Test
+    public void testInvalidLocale() {
+        AutosuggestOptions options = new AutosuggestOptions();
+        options.setFocus(new Coordinates(51, 1));
+        options.setLocale("mn_las");
+        Autosuggest autosuggest = api.autosuggest("a.a.a").nResults(3)
+                .options(options).execute();
+
+        assertFalse(autosuggest.isSuccessful());
+
+        What3WordsError error = autosuggest.getError();
+
+        assertEquals(What3WordsError.BAD_LANGUAGE, error);
+    }
+
+    @Test
+    public void testInvalidLocaleButValidLanguage() {
+        AutosuggestOptions options = new AutosuggestOptions();
+        options.setFocus(new Coordinates(51, 1));
+        options.setLanguage("mn");
+        options.setLocale("mn_las");
+        Autosuggest autosuggest = api.autosuggest("a.a.a").nResults(3)
+                .options(options).execute();
+
+        assertFalse(autosuggest.isSuccessful());
+
+        What3WordsError error = autosuggest.getError();
+
+        assertEquals(What3WordsError.BAD_LANGUAGE, error);
     }
 
     @Test

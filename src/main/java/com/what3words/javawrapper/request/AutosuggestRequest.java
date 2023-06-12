@@ -19,6 +19,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
     private String clipToPolygon;
     private String inputType;
     private String language;
+    private String locale;
     private String preferLand;
 
     private AutosuggestRequest(Builder builder) {
@@ -34,11 +35,12 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         clipToPolygon = builder.clipToPolygon;
         inputType = builder.inputType;
         language = builder.language;
+        locale = builder.locale;
         preferLand = builder.preferLand;
     }
 
     private Autosuggest execute() {
-        return super.execute(api.what3words().autosuggest(input, nResults, focus, nFocusResults, clipToCountry, clipToBoundingBox, clipToCircle, clipToPolygon, inputType, language, preferLand), Autosuggest.class);
+        return super.execute(api.what3words().autosuggest(input, nResults, focus, nFocusResults, clipToCountry, clipToBoundingBox, clipToCircle, clipToPolygon, inputType, language, locale, preferLand), Autosuggest.class);
     }
 
     public static class Builder extends AbstractBuilder<Autosuggest> {
@@ -52,6 +54,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         private String clipToPolygon;
         private String inputType;
         private String language;
+        private String locale;
         private String preferLand;
         private AutosuggestOptions options;
 
@@ -179,6 +182,21 @@ public class AutosuggestRequest extends Request<Autosuggest> {
         }
 
         /**
+         * For some of our supported languages, a what3words locale can be specified within the API request using either
+         * the parameter locale or using the language parameter. The locale allows the what3words address to be displayed in a variant of a language.
+         * For example, Mongolian what3words addresses can be displayed in either Cyrillic (mn_cy) or Latin (mn_la) characters and therefore by specifying the locale in the API request you can return either variant.
+         * The locale will also be included in the API response to show which variant has been returned.
+         *
+         * @param locale the fallback locale
+         * @return a {@link AutosuggestRequest.Builder} instance suitable for invoking a <code>autosuggest</code> API request
+         */
+        public Builder locale(String locale) {
+            this.locale = locale;
+            this.options.setLocale(locale);
+            return this;
+        }
+
+        /**
          * For power users, used to specify voice input mode. Can be <code>AutosuggestInputType.TEXT</code> (default), <code>AutosuggestInputType.VOCON_HYBRID</code>
          * or <code>AutosuggestInputType.NMDP_ASR</code>. See voice recognition section within the developer docs for more details https://docs.what3words.com/api/v3/#voice.
          *
@@ -217,6 +235,7 @@ public class AutosuggestRequest extends Request<Autosuggest> {
                 clipToPolygon(options.getClipToPolygon().toArray(new Coordinates[]{}));
             if (options.getClipToBoundingBox() != null) clipToBoundingBox(options.getClipToBoundingBox());
             if (options.getLanguage() != null) language(options.getLanguage());
+            if (options.getLocale() != null) locale(options.getLocale());
             if (options.getInputType() != null) inputType(options.getInputType());
             if (options.getPreferLand() != null) preferLand(options.getPreferLand());
             return this;
