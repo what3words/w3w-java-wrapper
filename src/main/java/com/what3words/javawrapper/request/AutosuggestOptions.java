@@ -7,6 +7,7 @@ public class AutosuggestOptions implements Serializable {
     private Coordinates focus;
     private SourceApi source;
     private String language;
+    private String locale;
     private Integer nResults;
     private Integer nFocusResults;
     private List<String> clipToCountry;
@@ -43,6 +44,8 @@ public class AutosuggestOptions implements Serializable {
         return this.language;
     }
 
+    public final String getLocale() { return this.locale; }
+
     /**
      * For normal text input, specifies a fallback language, which will help guide AutoSuggest if the input is particularly messy. If specified,
      * this parameter must be a supported 3 word address language as an ISO 639-1 2 letter code. For voice input (see voice section),
@@ -52,6 +55,18 @@ public class AutosuggestOptions implements Serializable {
      */
     public final void setLanguage(String language) {
         this.language = language;
+    }
+
+    /**
+     * For some of our supported languages, a what3words locale can be specified within the API request using either
+     * the parameter locale or using the language parameter. The locale allows the what3words address to be displayed in a variant of a language.
+     * For example, Mongolian what3words addresses can be displayed in either Cyrillic (mn_cy) or Latin (mn_la) characters and therefore by specifying the locale in the API request you can return either variant.
+     * The locale will also be included in the API response to show which variant has been returned.
+     *
+     * @param locale the fallback locale
+     */
+    public final void setLocale(String locale) {
+        this.locale = locale;
     }
 
     public final Integer getNResults() {

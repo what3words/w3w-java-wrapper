@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface What3WordsV3Service {
     @GET("convert-to-3wa")
-    Call<ConvertTo3WA> convertTo3wa(@Query("coordinates") String coordinates, @Query("language") String language);
+    Call<ConvertTo3WA> convertTo3wa(@Query("coordinates") String coordinates, @Query("language") String language,  @Query("locale") String locale);
     
     @GET("convert-to-coordinates")
     Call<ConvertToCoordinates> convertToCoordinates(@Query("words") String addr);
@@ -25,6 +25,7 @@ public interface What3WordsV3Service {
             @Query("clip-to-polygon") String clipToPolygon,
             @Query("input-type") String inputType,
             @Query("language") String lang,
+            @Query("locale") String locale,
             @Query("prefer-land") String preferLand
             );
     
@@ -40,6 +41,7 @@ public interface What3WordsV3Service {
             @Query("clip-to-polygon") String clipToPolygon,
             @Query("input-type") String inputType,
             @Query("language") String lang,
+            @Query("locale") String locale,
             @Query("prefer-land") String preferLand
             );
 
@@ -58,6 +60,7 @@ public interface What3WordsV3Service {
             @Query("clip-to-polygon") String clipToPolygon,
             @Query("input-type") String inputType,
             @Query("language") String lang,
+            @Query("locale") String locale,
             @Query("prefer-land") String preferLand
     );
     

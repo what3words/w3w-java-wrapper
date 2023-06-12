@@ -1,8 +1,5 @@
 package com.what3words.javawrapper;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import com.what3words.javawrapper.request.ConvertTo3WARequest;
 import org.junit.Test;
 
@@ -10,6 +7,8 @@ import com.what3words.javawrapper.request.Coordinates;
 import com.what3words.javawrapper.response.APIResponse;
 import com.what3words.javawrapper.response.ConvertTo3WA;
 import com.what3words.javawrapper.response.APIResponse.What3WordsError;
+
+import static org.junit.Assert.*;
 
 public class ConvertTo3WATest {
     What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
@@ -64,5 +63,30 @@ public class ConvertTo3WATest {
         assertEquals("pt", twa.getLanguage());
         assertEquals("https://w3w.co/refrigerando.valem.touro", twa.getMap());
         assertEquals("Londres, London", twa.getNearestPlace());
+    }
+
+    @Test
+    public void validCoordsWithLocaleTest() {
+        ConvertTo3WARequest.Builder twaBuilder = api.convertTo3wa(new Coordinates(51.520847, -0.19552100)).locale("mn_la");
+        assertNull(twaBuilder.getLanguage());
+        assertEquals("mn_la", twaBuilder.getLocale());
+
+        ConvertTo3WA twa = twaBuilder.execute();
+
+        assertEquals("seruuhen.zemseg.dagaldah", twa.getWords());
+        assertEquals("GB", twa.getCountry());
+
+        assertEquals(-0.195543, twa.getSquare().getSouthwest().getLng(), 0);
+        assertEquals(51.520833, twa.getSquare().getSouthwest().getLat(),0);
+        assertEquals(-0.195499, twa.getSquare().getNortheast().getLng(),0);
+        assertEquals(51.52086, twa.getSquare().getNortheast().getLat(), 0);
+
+        assertEquals(-0.195521,  twa.getCoordinates().getLng(),0);
+        assertEquals(51.520847, twa.getCoordinates().getLat(), 0);
+
+        assertEquals("mn", twa.getLanguage());
+        assertEquals("mn_la", twa.getLocale());
+        assertEquals("https://w3w.co/seruuhen.zemseg.dagaldah", twa.getMap());
+        assertEquals("Лондон, London", twa.getNearestPlace());
     }
 }
