@@ -9,6 +9,7 @@ public class ConvertToCoordinates extends Response<ConvertToCoordinates> {
     private Coordinates coordinates;
     private String words;
     private String language;
+    private String locale;
     private String map;
 
     public ConvertToCoordinates() {
@@ -21,6 +22,17 @@ public class ConvertToCoordinates extends Response<ConvertToCoordinates> {
         this.coordinates = coordinates;
         this.words = words;
         this.language = language;
+        this.map = map;
+    }
+
+    public ConvertToCoordinates(String country, Square square, String nearestPlace, Coordinates coordinates, String words, String language, String locale, String map) {
+        this.country = country;
+        this.square = square;
+        this.nearestPlace = nearestPlace;
+        this.coordinates = coordinates;
+        this.words = words;
+        this.language = language;
+        this.locale = locale;
         this.map = map;
     }
 
@@ -47,6 +59,8 @@ public class ConvertToCoordinates extends Response<ConvertToCoordinates> {
     public String getLanguage() {
         return language;
     }
+
+    public String getLocale() { return locale; }
 
     public String getMap() {
         return map;

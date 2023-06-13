@@ -9,6 +9,7 @@ public class ConvertTo3WA extends Response<ConvertTo3WA> {
     private Coordinates coordinates;
     private String words;
     private String language;
+    private String locale;
     private String map;
 
     public ConvertTo3WA() {
@@ -21,6 +22,17 @@ public class ConvertTo3WA extends Response<ConvertTo3WA> {
         this.coordinates = coordinates;
         this.words = words;
         this.language = language;
+        this.map = map;
+    }
+
+    public ConvertTo3WA(String country, Square square, String nearestPlace, Coordinates coordinates, String words, String language, String locale, String map) {
+        this.country = country;
+        this.square = square;
+        this.nearestPlace = nearestPlace;
+        this.coordinates = coordinates;
+        this.words = words;
+        this.language = language;
+        this.locale = locale;
         this.map = map;
     }
 
@@ -47,6 +59,8 @@ public class ConvertTo3WA extends Response<ConvertTo3WA> {
     public String getLanguage() {
         return language;
     }
+
+    public String getLocale() { return locale; }
 
     public String getMap() {
         return map;

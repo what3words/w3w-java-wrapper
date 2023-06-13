@@ -1,8 +1,11 @@
 package com.what3words.javawrapper.request;
+
+import java.io.Serializable;
+
 /**
  * A Coordinate represents (latitude, longitude) coordinates encoded according to the World Geodetic System (WGS84).
  */
-public final class Coordinates {
+public final class Coordinates implements Serializable {
     public final double lat;
     public final double lng;
 

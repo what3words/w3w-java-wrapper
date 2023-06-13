@@ -1,12 +1,15 @@
 package com.what3words.javawrapper.response;
 
-public class SuggestionWithCoordinates {
+import java.io.Serializable;
+
+public class SuggestionWithCoordinates implements Serializable {
     private String country;
     private Square square;
     private String nearestPlace;
     private Coordinates coordinates;
     private String words;
     private String language;
+    private String locale;
     private String map;
     private Integer distanceToFocusKm;
     private int rank;
@@ -16,6 +19,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
     }
@@ -25,6 +29,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
         this.coordinates = coordinates;
@@ -35,6 +40,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
         this.coordinates = new Coordinates(lat, lng);
@@ -45,6 +51,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
         this.coordinates = new Coordinates(lat, lng);
@@ -56,6 +63,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
         coordinates = convertToCoordinates.getCoordinates();
@@ -68,6 +76,7 @@ public class SuggestionWithCoordinates {
         nearestPlace = suggestion.getNearestPlace();
         words = suggestion.getWords();
         language = suggestion.getLanguage();
+        locale = suggestion.getLocale();
         distanceToFocusKm = suggestion.getDistanceToFocusKm();
         rank = suggestion.getRank();
         coordinates = convertTo3WA.getCoordinates();
@@ -98,6 +107,8 @@ public class SuggestionWithCoordinates {
     public String getLanguage() {
         return language;
     }
+
+    public String getLocale() {return locale; }
 
     public String getMap() {
         return map;
