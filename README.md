@@ -24,9 +24,8 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 
 ### Gradle
 
-```
+
 implementation 'com.what3words:w3w-java-wrapper:3.1.18'
-```
 
 ## Documentation
 
