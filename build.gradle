@@ -8,6 +8,7 @@ plugins {
 ext {
     retrofit = "2.9.0"
     junit = "4.13.2"
+    okhttp = "4.10.0"
 }
 
 apply from: 'maven-push.gradle'
@@ -25,6 +26,7 @@ repositories {
 dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
     testImplementation "junit:junit:$junit"
 }
 
