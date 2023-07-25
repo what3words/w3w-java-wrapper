@@ -1,6 +1,6 @@
 # <img src="https://what3words.com/assets/images/w3w_square_red.png" width="64" height="64" alt="what3words">&nbsp;w3w-java-wrapper
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.what3words/w3w-java-wrapper.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.what3words%22%20AND%20a:%22w3w-android-wrapper%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.what3words/w3w-java-wrapper)](https://central.sonatype.com/artifact/com.what3words/w3w-java-wrapper)
 
 A Java library to use the [what3words v3 API](https://docs.what3words.com/api/v3/).
 
