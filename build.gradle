@@ -5,6 +5,12 @@ plugins {
     id "org.sonarqube" version "3.4.0.2513"
 }
 
+ext {
+    retrofit = "2.9.0"
+    junit = "4.13.2"
+    okhttp = "4.10.0"
+}
+
 apply from: 'maven-push.gradle'
 apply from: 'jacoco.gradle'
 apply from: 'sonarqube.gradle'
@@ -18,8 +24,10 @@ repositories {
 }
 
 dependencies {
-    api libs.bundles.retrofit
-    testImplementation testLibs.junit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp"
+    testImplementation "junit:junit:$junit"
 }
 
 version = findProperty('LIBRARY_VERSION') ? findProperty('LIBRARY_VERSION') : '3.1.15'
