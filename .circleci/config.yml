@@ -5,7 +5,7 @@ orbs:
 jobs:
   run-unit-tests:
     docker:
-      - image: cimg/openjdk:8.0.312-browsers
+      - image: circleci/java:8-jdk
     steps:
       - checkout
       - run:
@@ -18,7 +18,7 @@ jobs:
           path: build/test-results
   deploy-to-sonatype:
     docker:
-      - image: cimg/openjdk:8.0.312-browsers
+      - image: circleci/java:8-jdk
     steps:
       - checkout
       - restore_cache:
