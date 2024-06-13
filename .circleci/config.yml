@@ -5,7 +5,7 @@ orbs:
 jobs:
   run-unit-tests:
     docker:
-      - image: circleci/java:8-jdk
+      - image: cimg/android:2021.08.1
     steps:
       - checkout
       - run:
@@ -18,7 +18,7 @@ jobs:
           path: build/test-results
   deploy-to-sonatype:
     docker:
-      - image: circleci/java:8-jdk
+      - image: cimg/android:2021.08.1
     steps:
       - checkout
       - restore_cache:
