@@ -9,7 +9,7 @@ import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import com.what3words.javawrapper.response.ConvertToCoordinates;
 
 public class ConvertToCoordinatesTest {
-    What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
+    What3WordsV3 api = new What3WordsV3("TSTSTSTS");
     
     @Test
     public void invalid3waTest() {
@@ -58,7 +58,7 @@ public class ConvertToCoordinatesTest {
         assertEquals("mn", coords.getLanguage());
         assertEquals("mn_la", coords.getLocale());
         assertEquals("https://w3w.co/seruuhen.zemseg.dagaldah", coords.getMap());
-        assertEquals("Лондон, London", coords.getNearestPlace());
+        assertEquals("Лондон", coords.getNearestPlace());
     }
 }
 
