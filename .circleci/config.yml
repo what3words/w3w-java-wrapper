@@ -4,7 +4,8 @@ orbs:
 
 jobs:
   run-unit-tests:
-    machine: true
+    docker:
+      - image: cimg/openjdk:8.0.402-browsers
     steps:
       - checkout
       - run:
@@ -16,7 +17,8 @@ jobs:
       - store_test_results:
           path: build/test-results
   deploy-to-sonatype:
-    machine: true
+    docker:
+      - image: cimg/openjdk:8.0.402-browsers
     steps:
       - checkout
       - restore_cache:
