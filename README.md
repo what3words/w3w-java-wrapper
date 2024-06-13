@@ -81,3 +81,4 @@ if (coordinates.isSuccessful()) { // the request was successful
 - [AutoSuggest](src/main/java/com/what3words/javawrapper/examples/AutosuggestExample.java) - AutoSuggest can take a slightly incorrect 3 word address, and suggest a list of valid 3 word addresses.
 - [Grid Section](src/main/java/com/what3words/javawrapper/examples/GridSectionExample.java) - Returns a section of the 3m x 3m what3words grid for a bounding box.
 - [Available Languages](src/main/java/com/what3words/javawrapper/examples/AvailableLanguagesExample.java) - Retrieves a list all available 3 word address languagesw3w-java-wrapper
+- [Is Valid 3 Word Address](src/main/java/com/what3words/javawrapper/examples/IsValid3waExample.java) - Checks if a what3words address is 

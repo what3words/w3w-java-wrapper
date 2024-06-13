@@ -19,4 +19,5 @@ public interface What3WordsJavaWrapper {
     AvailableLanguagesRequest.Builder availableLanguages();
     Retrofit getRetrofitInstance();
     What3WordsV3Service what3words();
+    Boolean isValid3wa(String words);
 }
