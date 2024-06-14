@@ -11,7 +11,7 @@ import com.what3words.javawrapper.response.APIResponse.What3WordsError;
 import static org.junit.Assert.*;
 
 public class ConvertTo3WATest {
-    What3WordsV3 api = new What3WordsV3("TSTSTSTS");
+    What3WordsV3 api = new What3WordsV3(System.getenv("PROD_API_KEY"));
     
     @Test
     public void twoInvalidCoordsTest() {
