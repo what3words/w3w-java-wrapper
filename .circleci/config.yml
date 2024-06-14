@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   gradle: circleci/gradle@3.0.0
+  android: circleci/android@2.3.0
 
 jobs:
   run-unit-tests:
