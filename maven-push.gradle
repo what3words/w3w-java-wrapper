@@ -1,5 +1,5 @@
-def ossrhUsername = findProperty('OSSRH_USERNAME')
-def ossrhPassword = findProperty('OSSRH_PASSWORD')
+def ossrhUsername = findProperty('OSSRH_USERNAME_NEW')
+def ossrhPassword = findProperty('OSSRH_PASSWORD_NEW')
 def signingKey = findProperty('SIGNING_KEY')
 def signingKeyPwd = findProperty('SIGNING_KEY_PWD')
 
