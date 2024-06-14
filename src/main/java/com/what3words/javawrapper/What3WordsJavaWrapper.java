@@ -1,6 +1,8 @@
 package com.what3words.javawrapper;
 
 import com.what3words.javawrapper.request.*;
+import com.what3words.javawrapper.response.APIResponse;
+import com.what3words.javawrapper.response.IsValid3waResponse;
 import com.what3words.javawrapper.services.What3WordsV3Service;
 import retrofit2.Retrofit;
 
@@ -19,5 +21,5 @@ public interface What3WordsJavaWrapper {
     AvailableLanguagesRequest.Builder availableLanguages();
     Retrofit getRetrofitInstance();
     What3WordsV3Service what3words();
-    Boolean isValid3wa(String words);
+    IsValid3waResponse isValid3wa(String words);
 }

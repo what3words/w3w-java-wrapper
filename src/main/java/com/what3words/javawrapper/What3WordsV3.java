@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import com.what3words.javawrapper.request.*;
 import com.what3words.javawrapper.response.Autosuggest;
+import com.what3words.javawrapper.response.IsValid3waResponse;
 import com.what3words.javawrapper.response.Suggestion;
 import com.what3words.javawrapper.services.What3WordsV3Service;
 
@@ -260,20 +261,20 @@ public class What3WordsV3 implements What3WordsJavaWrapper {
      * @param words The what3words address to validate.
      * @return {@link Boolean} value indicating whether the what3words address is valid.
      */
-    public Boolean isValid3wa(String words) {
+    public IsValid3waResponse isValid3wa(String words) {
         if (!isPossible3wa(words)) {
-            return false;
+            return IsValid3waResponse.success(false);
         }
         Autosuggest autosuggest = autosuggest(words).execute();
-        if (autosuggest == null || !autosuggest.isSuccessful()) {
-            return false;
+        if (!autosuggest.isSuccessful()) {
+            return IsValid3waResponse.error(autosuggest.getError());
         }
         for (Suggestion suggestion : autosuggest.getSuggestions()) {
             if (suggestion.getWords().replace("/", "")
                     .equalsIgnoreCase(words.replace("/", ""))) {
-                return true;
+                return IsValid3waResponse.success(true);
             }
         }
-        return false;
+        return IsValid3waResponse.success(false);
     }
 }
