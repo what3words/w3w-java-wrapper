@@ -31,6 +31,6 @@ public class IsValid3waTest {
         IsValid3waResponse response = errorApi.isValid3wa("filled.count.soap");
         assertNull(response.getIsValid());
         assertFalse(response.isSuccessful());
-        assertSame(response.getError(), APIResponse.What3WordsError.INVALID_KEY);
+        assertSame(APIResponse.What3WordsError.INVALID_KEY, response.getError());
     }
 }
