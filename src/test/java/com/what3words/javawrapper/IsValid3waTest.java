@@ -28,7 +28,7 @@ public class IsValid3waTest {
     @Test
     public void testIsValid3waApiKeyError() {
         What3WordsV3 errorApi = new What3WordsV3("wrong api key");
-        IsValid3waResponse response = api.isValid3wa("filled.count.soap");
+        IsValid3waResponse response = errorApi.isValid3wa("filled.count.soap");
         assertNull(response.getIsValid());
         assertFalse(response.isSuccessful());
         assertSame(response.getError(), APIResponse.What3WordsError.INVALID_KEY);
