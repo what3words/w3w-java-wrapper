@@ -58,7 +58,7 @@ public class ConvertToCoordinatesTest {
         assertEquals("mn", coords.getLanguage());
         assertEquals("mn_la", coords.getLocale());
         assertEquals("https://w3w.co/seruuhen.zemseg.dagaldah", coords.getMap());
-        assertEquals("Лондон, London", coords.getNearestPlace());
+        assertEquals("Лондон", coords.getNearestPlace());
     }
 }
 
