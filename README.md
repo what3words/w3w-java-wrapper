@@ -82,3 +82,34 @@ if (coordinates.isSuccessful()) { // the request was successful
 - [Grid Section](src/main/java/com/what3words/javawrapper/examples/GridSectionExample.java) - Returns a section of the 3m x 3m what3words grid for a bounding box.
 - [Available Languages](src/main/java/com/what3words/javawrapper/examples/AvailableLanguagesExample.java) - Retrieves a list all available 3 word address languages.
 - [Is Valid 3 Word Address](src/main/java/com/what3words/javawrapper/examples/IsValid3waExample.java) - Checks if a what3words address is valid.
+
+
+## Helper Functions
+
+### isPossible3wa
+Check if a String is a possible what3words address. A reminder that this just checks the format of the text, hence why is called possible3wa, to verify if it's a real what3words address please use [Is Valid 3 Word Address](src/main/java/com/what3words/javawrapper/examples/IsValid3waExample.java).
+
+```java
+Boolean isPossible = What3WordsV3.isPossible3wa("filled.count.soap"); // returns true
+Boolean isPossible = What3WordsV3.isPossible3wa("not a 3wa"); // returns false
+Boolean isPossible = What3WordsV3.isPossible3wa("not.3wa address"); //returns false
+```
+
+### didYouMean3wa
+Check if a String is a possible what3words address, this regex allows different separators (i.e: not using standard full stop/dot). A reminder that this just checks the format of the text, hence why is called didYouMean3wa, to verify if it's a real what3words address please use [Is Valid 3 Word Address](src/main/java/com/what3words/javawrapper/examples/IsValid3waExample.java) using full stop as a separator.
+
+```java
+Boolean isDym = What3WordsV3.didYouMean3wa("filled-count-soap"); // returns true
+Boolean isDym = What3WordsV3.didYouMean3wa("not valid"); // returns false
+Boolean isDym = What3WordsV3.didYouMean3wa("not.3wa address"); // returns false
+Boolean isDym = What3WordsV3.didYouMean3wa("not.threewa address"); // returns true
+```
+
+### findPossible3wa
+Get any possible what3words addresses from a text. Will return an empty list if no possible addresses are found. Reminder that this just checks the format of the text, hence why is called findPossible3wa, to verify if it's a real what3words address please use [Is Valid 3 Word Address](src/main/java/com/what3words/javawrapper/examples/IsValid3waExample.java) to verify each item of the list.
+
+```java
+List<String> possible = What3WordsV3.findPossible3wa("Please leave by my porch at filled.count.soap"); //returns ["filled.count.soap"]
+List<String> possible = What3WordsV3.findPossible3wa("Please leave by my porch at filled.count.soap or deed.tulip.judge"); // returns ["filled.count.soap", "deed.tulip.judge"]
+List<String> possible = What3WordsV3.findPossible3wa("Please leave by my porch at"); // returns []
+```
