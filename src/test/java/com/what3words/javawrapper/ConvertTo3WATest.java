@@ -62,7 +62,7 @@ public class ConvertTo3WATest {
 
         assertEquals("pt", twa.getLanguage());
         assertEquals("https://w3w.co/refrigerando.valem.touro", twa.getMap());
-        assertEquals("Londres, London", twa.getNearestPlace());
+        assertEquals("Londres", twa.getNearestPlace());
     }
 
     @Test
@@ -87,6 +87,6 @@ public class ConvertTo3WATest {
         assertEquals("mn", twa.getLanguage());
         assertEquals("mn_la", twa.getLocale());
         assertEquals("https://w3w.co/seruuhen.zemseg.dagaldah", twa.getMap());
-        assertEquals("Лондон, London", twa.getNearestPlace());
+        assertEquals("Лондон", twa.getNearestPlace());
     }
 }

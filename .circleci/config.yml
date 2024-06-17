@@ -1,10 +1,14 @@
 version: 2.1
 orbs:
   gradle: circleci/gradle@3.0.0
+  android: circleci/android@2.3.0
 
 jobs:
   run-unit-tests:
-    machine: true
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2023.05.1
     steps:
       - checkout
       - run:
@@ -16,7 +20,10 @@ jobs:
       - store_test_results:
           path: build/test-results
   deploy-to-sonatype:
-    machine: true
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2023.05.1
     steps:
       - checkout
       - restore_cache:
