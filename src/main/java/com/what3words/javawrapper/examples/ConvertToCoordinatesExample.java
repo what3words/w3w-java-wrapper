@@ -27,6 +27,9 @@ public class ConvertToCoordinatesExample {
             } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
+            } else if (error == What3WordsError.QUOTA_EXCEEDED) { // Network Error
+                System.out.println("QuotaExceeded: " + error.getMessage());
+
             } else { // Unknown Error
                 System.out.println(error + ": " + error.getMessage());
 
