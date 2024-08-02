@@ -75,7 +75,8 @@ public class APIResponse<T> {
         INVALID_IP_ADDRESS("InvalidIpAddress"),
         INVALID_APP_CREDENTIALS("InvalidAppCredentials"),
         
-        SDK_ERROR("SdkError");
+        SDK_ERROR("SdkError"),
+        QUOTA_EXCEEDED("QuotaExceeded");
 
         private final String key;
         private String message;
