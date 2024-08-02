@@ -27,7 +27,7 @@ public class ConvertToCoordinatesExample {
             } else if (error == What3WordsError.NETWORK_ERROR) { // Network Error
                 System.out.println("NetworkError: " + error.getMessage());
 
-            } else if (error == What3WordsError.QUOTA_EXCEEDED) { // Network Error
+            } else if (error == What3WordsError.QUOTA_EXCEEDED) { // Quota Error
                 System.out.println("QuotaExceeded: " + error.getMessage());
 
             } else { // Unknown Error
