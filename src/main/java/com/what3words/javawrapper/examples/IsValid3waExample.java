@@ -1,11 +1,6 @@
 package com.what3words.javawrapper.examples;
 
 import com.what3words.javawrapper.What3WordsV3;
-import com.what3words.javawrapper.request.AutosuggestInputType;
-import com.what3words.javawrapper.request.AutosuggestOptions;
-import com.what3words.javawrapper.request.Coordinates;
-import com.what3words.javawrapper.response.APIResponse.What3WordsError;
-import com.what3words.javawrapper.response.Autosuggest;
 import com.what3words.javawrapper.response.IsValid3waResponse;
 
 public class IsValid3waExample {
