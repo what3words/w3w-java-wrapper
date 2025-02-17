@@ -18,14 +18,14 @@ The artifact is available through <a href="https://search.maven.org/search?q=g:c
 <dependency>
   <groupId>com.what3words</groupId>
   <artifactId>w3w-java-wrapper</artifactId>
-  <version>3.1.19</version>
+  <version>$latest</version>
 </dependency>
 ```
 
 ### Gradle
 
 
-implementation 'com.what3words:w3w-java-wrapper:3.1.19'
+implementation 'com.what3words:w3w-java-wrapper:$latest'
 
 ## Documentation
 
